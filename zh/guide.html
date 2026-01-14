@@ -1,0 +1,623 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>开发指南 | Aca.ts</title>
+    <meta name="generator" content="VuePress 1.9.7">
+    
+    <meta name="description" content="一个能自动生成ORM和web前端访问后端的typescript API的命令行工具">
+    
+    <link rel="preload" href="/assets/css/0.styles.1f8a509b.css" as="style"><link rel="preload" href="/assets/js/app.8e4a1e90.js" as="script"><link rel="preload" href="/assets/js/3.3a424c07.js" as="script"><link rel="preload" href="/assets/js/14.42e652da.js" as="script"><link rel="prefetch" href="/assets/js/10.d2928415.js"><link rel="prefetch" href="/assets/js/11.4b9e63c0.js"><link rel="prefetch" href="/assets/js/12.e1dfbe22.js"><link rel="prefetch" href="/assets/js/13.ea3558af.js"><link rel="prefetch" href="/assets/js/15.310d602b.js"><link rel="prefetch" href="/assets/js/16.b964bc73.js"><link rel="prefetch" href="/assets/js/4.3a5d42a7.js"><link rel="prefetch" href="/assets/js/5.0150813a.js"><link rel="prefetch" href="/assets/js/6.18a98952.js"><link rel="prefetch" href="/assets/js/7.1f9cb122.js"><link rel="prefetch" href="/assets/js/8.fb43af7d.js"><link rel="prefetch" href="/assets/js/9.5a055c16.js"><link rel="prefetch" href="/assets/js/vendors~docsearch.271cdf46.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.1f8a509b.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/zh/" class="home-link router-link-active"><!----> <span class="site-name">Aca.ts</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/zh/guide/" class="nav-link">
+  开发指南
+</a></div><div class="nav-item"><a href="/zh/question/" class="nav-link">
+  问 &amp; 答
+</a></div><div class="nav-item"><a href="/zh/changelog.html" class="nav-link">
+  更新日志
+</a></div><div class="nav-item"><a href="https://github.com/lglie/aca.ts" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  GitHub
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Select language" class="dropdown-title"><span class="title">选择语言</span> <span class="arrow down"></span></button> <button type="button" aria-label="Select language" class="mobile-dropdown-title"><span class="title">选择语言</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/guide.html" class="nav-link">
+  English
+</a></li><li class="dropdown-item"><!----> <a href="/zh/guide.html" aria-current="page" class="nav-link router-link-exact-active router-link-active">
+  简体中文
+</a></li></ul></div></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/zh/guide/" class="nav-link">
+  开发指南
+</a></div><div class="nav-item"><a href="/zh/question/" class="nav-link">
+  问 &amp; 答
+</a></div><div class="nav-item"><a href="/zh/changelog.html" class="nav-link">
+  更新日志
+</a></div><div class="nav-item"><a href="https://github.com/lglie/aca.ts" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  GitHub
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Select language" class="dropdown-title"><span class="title">选择语言</span> <span class="arrow down"></span></button> <button type="button" aria-label="Select language" class="mobile-dropdown-title"><span class="title">选择语言</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/guide.html" class="nav-link">
+  English
+</a></li><li class="dropdown-item"><!----> <a href="/zh/guide.html" aria-current="page" class="nav-link router-link-exact-active router-link-active">
+  简体中文
+</a></li></ul></div></div> <!----></nav>  <ul class="sidebar-links"><li><section class="sidebar-group depth-0"><p class="sidebar-heading open"><span>开发指南</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/zh/guide.html#关于-aca-ts" class="sidebar-link">关于 Aca.ts</a><ul class="sidebar-sub-headers"></ul></li><li><a href="/zh/guide.html#特点" class="sidebar-link">特点</a><ul class="sidebar-sub-headers"></ul></li><li><a href="/zh/guide.html#快速开始" class="sidebar-link">快速开始</a><ul class="sidebar-sub-headers"></ul></li><li><a href="/zh/guide.html#配置" class="sidebar-link">配置</a><ul class="sidebar-sub-headers"></ul></li><li><a href="/zh/guide.html#cli" class="sidebar-link">CLI</a><ul class="sidebar-sub-headers"></ul></li><li><a href="/zh/guide.html#orm" class="sidebar-link">ORM</a><ul class="sidebar-sub-headers"></ul></li><li><a href="/zh/guide.html#数据库-api" class="sidebar-link">数据库 API</a><ul class="sidebar-sub-headers"></ul></li><li><a href="/zh/guide.html#rpc-函数" class="sidebar-link">RPC 函数</a><ul class="sidebar-sub-headers"></ul></li><li><a href="/zh/guide.html#安全性" class="sidebar-link">安全性</a><ul class="sidebar-sub-headers"></ul></li><li><a href="/zh/guide.html#开发建议" class="sidebar-link">开发建议</a><ul class="sidebar-sub-headers"></ul></li><li><a href="/zh/guide.html#交流群" class="sidebar-link">交流群</a><ul class="sidebar-sub-headers"></ul></li></ul></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="开发指南"><a href="#开发指南" class="header-anchor">#</a> 开发指南</h1> <h2 id="关于-aca-ts"><a href="#关于-aca-ts" class="header-anchor">#</a> 关于 Aca.ts</h2> <p>Aca.ts 是一个只在前端开发的全栈开发工具，它能根据一个 Typescript ORM 文档，自动同步数据库、生成数据库查询的 API；根据后端函数及数据库查询的 API，自动生成前端访问后端的 API，以实现后端代码在前端开发、测试。</p> <h2 id="特点"><a href="#特点" class="header-anchor">#</a> 特点</h2> <ul><li>支持数据库事务</li> <li>支持数据库表和列的映射（map）</li> <li>支持多个数据库</li> <li>支持表和函数命名空间</li> <li>前后端数据交互接口自动生成（像 RPC，不需定义路由）</li> <li>和框架无关，适配现有任何前后端 JS 框架</li> <li>后端代码在前端开发、测试，免去和后端沟通</li> <li>TS 代码提示完善，无需看文档即可开发</li></ul> <h2 id="快速开始"><a href="#快速开始" class="header-anchor">#</a> 快速开始</h2> <p>先决条件：请先安装（如果没有）node.js(v18.0.0^) 和 ts-node。<br>
+在终端按顺序运行如下的命令(如果提示权限拒绝访问，请加 sudo 前缀)：</p> <div class="language-bash extra-class"><pre class="language-bash"><code>$ <span class="token function">npm</span> <span class="token function">install</span> -g aca.ts
+$ aca create acaProject <span class="token operator">&amp;&amp;</span> <span class="token builtin class-name">cd</span> acaProject
+$ aca server
+$ aca client
+$ aca up
+</code></pre></div><p>然后，分别在两个终端启动 server 和 client:<br>
+server 目录下运行:</p> <div class="language-bash extra-class"><pre class="language-bash"><code>$ <span class="token function">npm</span> run dev
+</code></pre></div><p>client 目录下运行：</p> <div class="language-bash extra-class"><pre class="language-bash"><code>$ <span class="token function">npm</span> start
+</code></pre></div><p>示例内置了一个 Better-Sqlite3 数据库，点击打开的页面上的按钮，会创建一条数据库 user 表记录，并返回其 id。<br>
+具体代码查看 src/App.tsx 页面，展示了如何在前端使用数据库 API 和 RPC 函数。</p> <h2 id="配置"><a href="#配置" class="header-anchor">#</a> 配置</h2> <p>config.json 位于.aca 目录下，具体字段说明如下：</p> <ul><li><p>ORM: 你自己编写的 typescript ORM 文件的名字，该 ORM 文件必须存放在.aca 目录下</p></li> <li><p>databases: 数据库相关配置(支持多数据库)，字段名为 ORM 文件中定义数据库模型时指定的变量名，默认为：default，可以指定的数据库配置有：</p> <ul><li>tableNameWithNamespace：默认为 true，定义 ORM 时，支持使用命名空间分类各个表定义，aca 在创建数据库时，是否也要加上命名空间的前缀，如果为 false，则数据库表的名字就只是你定义的 class 的名字</li> <li>onlyApi: 默认为 false， 当你项目中需要使用如第三方提供的数据库时，你不能去修改这样的数据库架构，只生成 API，不同步数据库架构</li> <li>idDefaultType：默认为&quot;cuid&quot;，当 id 类型不指定时，默认使用此类型</li> <li>foreignKeyConstraint: 默认为 true，外键表使用外键约束</li> <li>onUpdate onDelete：默认为&quot;cascade&quot; 当主键修改或删除时，外键的动作</li> <li>connectOption：数据库连接选项，参考 Knex.js 的连接选项</li></ul></li> <li><p>serverApps；为一个字典对象，项目下所有的后端应用均登记于此，也可以将自己创建的后端应用相关信息填于此（与通过 aca add 命名添加效果一样）；</p> <ul><li>字段名：为 app 的名字，</li> <li>apiDir：存放生成的 API 的路径名（相对于该 App），默认为：&quot;src/aca.server&quot;</li></ul></li> <li><p>clientApps：为一个字典对象，项目下所有的前端应用均登记于此，也可以将自己创建的前端应用相关信息填于此（与通过 aca add 命名添加效果一样）</p> <ul><li>字段名：为 app 的名字，</li> <li>apiDir：存放生成的 API 的路径名（相对于该 App），默认为：&quot;src/aca.client&quot;</li> <li>allowRPCs：为一个数组，指明该应用只能访问后端的 RPC 服务器列表，如果没有该字段，则默认为该项目下所有的后端应用的 RPC 都可访问</li></ul></li></ul> <h2 id="cli"><a href="#cli" class="header-anchor">#</a> CLI</h2> <p>Aca.ts 有如下命令：</p> <ol><li>创建一个新项目：</li></ol> <div class="language-bash extra-class"><pre class="language-bash"><code>   $ aca create <span class="token punctuation">[</span>projectName<span class="token punctuation">]</span>
+</code></pre></div><p>projectName: 你自己取的项目名
+运行该命令会在当前目录创建一个 projectName 文件夹，该文件夹下含有一个名为.aca 的文件夹，其中配置文件 config.json 就位于.aca 文件夹下<br>
+以下命令需在 projectName 目录或创建的 app 目录下运行。</p> <ol start="2"><li>创建一个后端服务：</li></ol> <div class="language-bash extra-class"><pre class="language-bash"><code>$ aca server <span class="token operator">&lt;</span>appName<span class="token operator">&gt;</span>
+</code></pre></div><p>appName 默认为：server<br>
+创建一个基于 koa 框架的简单后端服务</p> <ol start="3"><li>创建一个前端服务：</li></ol> <div class="language-bash extra-class"><pre class="language-bash"><code>$ aca client <span class="token operator">&lt;</span>appName<span class="token operator">&gt;</span>
+</code></pre></div><p>appName 默认为：client<br>
+调用 create-react-app 创建一个 react app 应用</p> <ol start="4"><li>将自己创建的应用添加到项目中(需保证该应用在 aca 项目目录下)：</li></ol> <div class="language-bash extra-class"><pre class="language-bash"><code>$ aca <span class="token function">add</span> <span class="token operator">&lt;</span>appName<span class="token operator">&gt;</span> --server --client --apiDir <span class="token operator">&lt;</span>path<span class="token operator">&gt;</span>
+</code></pre></div><p>appName:为你自己创建的这个 app 的名字<br>
+--server(-s)：指明是后端 App<br>
+--client(-c)：指明是前端 App<br>
+--apiDir(-a)：生成的 API 存放的路径<br>
+path：相对于该 App 的路径，默认为：src/aca.server 或 src/aca.client，如果同时指定-s 和-c，则-a 使用默认路径</p> <ol start="5"><li>生成 API:</li></ol> <div class="language-bash extra-class"><pre class="language-bash"><code>$ aca up
+</code></pre></div><p>生成前后端的 API, 并自动同步数据库架构（如果有改变的话）。API 存放于项目中各个 App 指定的目录下</p> <ol start="6"><li>数据库架构回滚：</li></ol> <div class="language-bash extra-class"><pre class="language-bash"><code>$ aca rollback
+</code></pre></div><p>会将数据库架构恢复到上一次改变，注意：被删除了的列的数据不能被恢复</p> <h2 id="orm"><a href="#orm" class="header-anchor">#</a> ORM</h2> <p>ORM 的定义可以参考 example-blog.ts 编写，具体说明如下：<br>
+支持的标量数据类型有：id、boolean、string、int、float、object（json 对象）、Date、enum（枚举类型）</p> <ul><li><p>id：每张表只有一个 id，支持 5 种类型：cuid uuid autoincrement int string, 写法如：id['autoincrement']，如果只写 id，则根据.aca/config.json/idDefaultType 指定，如果也不存在，则默认为：cuid</p></li> <li><p>boolean：布尔类型（true false）</p></li> <li><p>string：字符串类型</p></li> <li><p>int：整型</p></li> <li><p>float：浮点型</p></li> <li><p>object：json 对象类型</p></li> <li><p>Date：日期时间类型</p></li> <li><p>enum：自定义枚举类型</p></li> <li><p>标量数组：目前只支持 pg</p></li> <li><p>定义一个数据库：用一个顶级命名空间代表一个数据库，命名空间的名字指向你的一个数据库，包含一个可选的常量定义，和多个类定义，类定义也可以使用命名空间进行组织</p></li> <li><p>可选的常量定义：类型为字符串，其值为你在.aca/config.json/database 中定义的一个字段名，如果没有这个定义，则默认为：default</p></li> <li><p>定义一个表：用类定义语法：</p> <ul><li>数据库表的名字：类名</li> <li>数据库表的列名：字段名</li> <li>列的数据类型：字段类型</li> <li>表之间的关系：字段名，类型为表的名字</li></ul></li> <li><p>装饰器：</p> <ul><li>类装饰器：集成在 C 装饰器中，有 map、id、unique、index、deprecated
+<ul><li>@C.map(name)；数据库表的名字为：name</li> <li>@C.id(fields)：指定 id，fields: 列名组成的数组</li> <li>@C.unique(fields)：指定为 unique 约束，fields: 列名组成的数组</li> <li>@C.index(fields)：指定建表索引，fields: 列名组成的数组</li> <li>@C.deprecated；指明该表已被废弃</li></ul></li> <li>类成员装饰器：集成在 M 装饰器中，有：unique、index、dbType、createdAt、updatedAt、foreign、deprecated
+<ul><li>@M.unique：表明该字段为 unique 字段</li> <li>@M.index：表明该字段为 index 字段</li> <li>@M.dbType(name)：定义该字段的数据库类型，name 必须为该数据库支持的类型的名字，如：varchar(23)</li> <li>@M.createdAt、@M.updatedAt：数据记录创建和修改的时间戳，由系统自动填充</li> <li>@M.foreign(obj)：见表之间的关系</li> <li>@M.deprecated；指明该列已被废弃</li></ul></li></ul></li> <li><p>表之间的关系：
+两个关系表中都有一个类字段指向对向表，该字段的类型为对向表的表名，如果含有命名空间，也需要命名空间前缀<br>
+表之间的关系有一对一、一对多、多对多关系<br>
+一对一、一对多关系需要在相应的外键字段指定@M.foreign(obj)，外键字段也会建立在该表中<br>
+obj 写法：</p> <ul><li>如果 obj 是一个字符串或字符串数组，则 obj 为外键名，默认引用主键表 id 类型的字段</li> <li>如果 obj 是一个对象，则有以下字段：
+<ul><li>keys: 是一个字符串或字符串数组，其成员为外键名（aca.ts 会自动添加到数据库表中</li> <li>references：是一个字符串或字符串数组，引用的主键表的 id 或 unique 字段名</li> <li>onUpdate、onDelete：当主键被修改或删除时，外键表的动作，如果缺省，默认采用：.aca/config.json/databases 对应字段下的相应设置</li></ul></li> <li>一对一关系：主键字段或外键字段至少有一个是可选字段(在字段名后面加问号（?）)</li> <li>一对多关系：在主键表类型后面加数组类型（类型后面加方括号（[]）），此时外键字段自动为可选字段</li> <li>多对多关系：两个表的类型都为数组类型，此时，aca.ts 会自动创建一个多对多关系的映射表，对外不可见，如果需要可见，则你需要显式定义这个多对多关系映射表<br>
+注意：当两个表之间有多个关系时，最多只有一组关系可以不用在类型中指定对象字段名，其余关系必须在类型中指定对向表的字段名</li></ul></li></ul> <h2 id="数据库-api"><a href="#数据库-api" class="header-anchor">#</a> 数据库 API</h2> <ul><li><p>ts 类型：$Enum $ApiBridge</p> <ul><li><p>$Enum：所有自定义的枚举类型都集中放在这里，在代码中引用如下：$Enum['枚举名']</p></li> <li><p>$ApiBridge：连接前端和后端的数据格式定义：</p> <div class="language-typescript extra-class"><pre class="language-typescript"><code><span class="token keyword">export</span> <span class="token keyword">type</span> <span class="token class-name">$ApiBridge</span> <span class="token operator">=</span>
+  <span class="token operator">|</span> <span class="token punctuation">{</span>
+      kind<span class="token operator">:</span> <span class="token string">'rpc'</span>
+      method<span class="token operator">:</span> <span class="token builtin">string</span><span class="token punctuation">[</span><span class="token punctuation">]</span>
+      args<span class="token operator">:</span> <span class="token builtin">any</span>
+    <span class="token punctuation">}</span>
+  <span class="token operator">|</span> <span class="token punctuation">{</span>
+      kind<span class="token operator">:</span> <span class="token string">'orm'</span>
+      query<span class="token operator">:</span> <span class="token builtin">string</span>
+      dbVar<span class="token operator">:</span> <span class="token builtin">string</span>
+      method<span class="token operator">:</span> <span class="token builtin">string</span><span class="token punctuation">[</span><span class="token punctuation">]</span>
+      args<span class="token operator">:</span> <span class="token builtin">any</span>
+    <span class="token punctuation">}</span>
+  <span class="token operator">|</span> <span class="token punctuation">{</span>
+      kind<span class="token operator">:</span> <span class="token string">'raw'</span>
+      dbVar<span class="token operator">:</span> <span class="token builtin">string</span>
+      args<span class="token operator">:</span> <span class="token builtin">any</span>
+    <span class="token punctuation">}</span>
+</code></pre></div></li></ul></li> <li><p>数据库 API：对定义的所有 ORM，分别生成一个实例化的类对象，对象名为顶级命名空间名，为每个表生成处理方法，有：</p> <ul><li><p>findOne
+where 条件支持 id 字段或 unique 字段</p> <div class="language-typescript extra-class"><pre class="language-typescript"><code><span class="token comment">// By unique identifier</span>
+<span class="token keyword">const</span> user <span class="token operator">=</span> <span class="token keyword">await</span> blog<span class="token punctuation">.</span>user<span class="token punctuation">.</span><span class="token function">findOne</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+  where<span class="token operator">:</span> <span class="token punctuation">{</span>
+    firstName<span class="token operator">:</span> <span class="token string">'tom'</span><span class="token punctuation">,</span>
+    lastName<span class="token operator">:</span> <span class="token string">'aca'</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+<span class="token comment">// By ID</span>
+<span class="token keyword">const</span> user <span class="token operator">=</span> <span class="token keyword">await</span> blog<span class="token punctuation">.</span>user<span class="token punctuation">.</span><span class="token function">findOne</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+  where<span class="token operator">:</span> <span class="token punctuation">{</span>
+    id<span class="token operator">:</span> <span class="token number">99</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+</code></pre></div></li> <li><p>findMany
+筛选条件和运算符</p> <ul><li>eq 值等于 n。</li> <li>not 值不等于 n。</li> <li>in 值 n 存在于列表中。</li> <li>lt 值 n 小于 x。</li> <li>lte 值 n 小于或等于 x。</li> <li>gt 值 n 大于 x。</li> <li>gte 值 n 大于或等于 x。</li> <li>contains 值 n 包含 x。</li> <li>like 值 n 包含 x。</li> <li>startsWith 值 n 以 x 开头。</li> <li>endsWith 值 n 以 x 结尾。</li> <li>AND 所有条件必须返回 true。或者，将对象列表传递到 where 子句中 - AND 运算符不是必需的。</li> <li>OR 一个或多个条件必须返回 true。</li> <li>关系过滤器
+<ul><li>some 返回所有 一个或多个（“some”）相关记录与筛选条件匹配的记录。</li> <li>every 返回所有满足以下条件的记录：所有（“每个”）相关的记录都匹配过滤条件。</li> <li>none 返回所有满足以下条件的记录：零个相关记录匹配过滤条件。</li></ul></li></ul> <div class="language-typescript extra-class"><pre class="language-typescript"><code><span class="token comment">// returns all User records:</span>
+<span class="token keyword">const</span> users <span class="token operator">=</span> <span class="token keyword">await</span> blog<span class="token punctuation">.</span>user<span class="token punctuation">.</span><span class="token function">findMany</span><span class="token punctuation">(</span><span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">)</span>
+<span class="token comment">// Filter by a single field value</span>
+<span class="token keyword">const</span> users <span class="token operator">=</span> <span class="token keyword">await</span> blog<span class="token punctuation">.</span>user<span class="token punctuation">.</span><span class="token function">findMany</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+  where<span class="token operator">:</span> <span class="token punctuation">{</span>
+    lastName<span class="token operator">:</span> <span class="token punctuation">{</span>
+      endsWith<span class="token operator">:</span> <span class="token string">'aca'</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+<span class="token comment">// Filter by multiple field values</span>
+<span class="token keyword">const</span> users <span class="token operator">=</span> <span class="token keyword">await</span> blog<span class="token punctuation">.</span>user<span class="token punctuation">.</span><span class="token function">findMany</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+  where<span class="token operator">:</span> <span class="token punctuation">{</span>
+    firstName<span class="token operator">:</span> <span class="token punctuation">{</span>
+      startsWith<span class="token operator">:</span> <span class="token string">'t'</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    age<span class="token operator">:</span> <span class="token punctuation">{</span>
+      lt<span class="token operator">:</span> <span class="token number">18</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token constant">OR</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+      age<span class="token operator">:</span> <span class="token punctuation">{</span>
+        gt<span class="token operator">:</span> <span class="token number">18</span>
+      <span class="token punctuation">}</span><span class="token punctuation">,</span>
+      <span class="token constant">AND</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+        gender<span class="token operator">:</span> Gender<span class="token punctuation">.</span>Male
+      <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  orderBy<span class="token operator">:</span> <span class="token punctuation">{</span>
+    id<span class="token operator">:</span> <span class="token string">'desc'</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  limit<span class="token operator">:</span> <span class="token number">100</span><span class="token punctuation">,</span>
+  offset<span class="token operator">:</span> <span class="token number">0</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+<span class="token comment">// Filter by related record field values</span>
+<span class="token keyword">const</span> users <span class="token operator">=</span> <span class="token keyword">await</span> blog<span class="token punctuation">.</span>user<span class="token punctuation">.</span><span class="token function">findMany</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+  where<span class="token operator">:</span> <span class="token punctuation">{</span>
+    lastName<span class="token operator">:</span> <span class="token punctuation">{</span>
+      endsWith<span class="token operator">:</span> <span class="token string">'aca'</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    posts<span class="token operator">:</span> <span class="token punctuation">{</span>
+      some<span class="token operator">:</span> <span class="token punctuation">{</span>
+        score<span class="token operator">:</span> <span class="token punctuation">{</span>
+          gt<span class="token operator">:</span> <span class="token number">5</span>
+        <span class="token punctuation">}</span>
+      <span class="token punctuation">}</span><span class="token punctuation">,</span>
+      every<span class="token operator">:</span> <span class="token punctuation">{</span>
+        score<span class="token operator">:</span> <span class="token punctuation">{</span>
+          lte<span class="token operator">:</span> <span class="token number">50</span>
+        <span class="token punctuation">}</span>
+      <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+<span class="token keyword">const</span> posts <span class="token operator">=</span> <span class="token keyword">await</span> blog<span class="token punctuation">.</span>post<span class="token punctuation">.</span><span class="token function">findMany</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+  where<span class="token operator">:</span> <span class="token punctuation">{</span>
+    author<span class="token operator">:</span> <span class="token punctuation">{</span>
+      lastName<span class="token operator">:</span> <span class="token string">'aca'</span><span class="token punctuation">,</span>
+      age<span class="token operator">:</span> <span class="token punctuation">{</span>
+        gt<span class="token operator">:</span> <span class="token number">40</span>
+      <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+</code></pre></div></li> <li><p>findFirst
+筛选条件和运算符同 findMany</p> <div class="language-typescript extra-class"><pre class="language-typescript"><code><span class="token comment">// Filter by a single field value</span>
+<span class="token keyword">const</span> user <span class="token operator">=</span> <span class="token keyword">await</span> blog<span class="token punctuation">.</span>user<span class="token punctuation">.</span><span class="token function">findFirst</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+  where<span class="token operator">:</span> <span class="token punctuation">{</span>
+    lastName<span class="token operator">:</span> <span class="token punctuation">{</span>
+      endsWith<span class="token operator">:</span> <span class="token string">'aca'</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+<span class="token comment">// Filter by multiple field values</span>
+<span class="token keyword">const</span> user <span class="token operator">=</span> <span class="token keyword">await</span> blog<span class="token punctuation">.</span>user<span class="token punctuation">.</span><span class="token function">findFirst</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+  where<span class="token operator">:</span> <span class="token punctuation">{</span>
+    firstName<span class="token operator">:</span> <span class="token punctuation">{</span>
+      startsWith<span class="token operator">:</span> <span class="token string">'t'</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token constant">OR</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+      age<span class="token operator">:</span> <span class="token punctuation">{</span>
+        gt<span class="token operator">:</span> <span class="token number">18</span>
+      <span class="token punctuation">}</span><span class="token punctuation">,</span>
+      <span class="token constant">AND</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+        gender<span class="token operator">:</span> <span class="token punctuation">{</span>
+          equals<span class="token operator">:</span> Gender<span class="token punctuation">.</span>Male
+        <span class="token punctuation">}</span>
+      <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  orderBy<span class="token operator">:</span> <span class="token punctuation">{</span>
+    id<span class="token operator">:</span> <span class="token string">'desc'</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+<span class="token comment">// Filter by related record field values</span>
+<span class="token keyword">const</span> user <span class="token operator">=</span> <span class="token keyword">await</span> blog<span class="token punctuation">.</span>user<span class="token punctuation">.</span><span class="token function">findFirst</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+  where<span class="token operator">:</span> <span class="token punctuation">{</span>
+    lastName<span class="token operator">:</span> <span class="token punctuation">{</span>
+      endsWith<span class="token operator">:</span> <span class="token string">'aca'</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    posts<span class="token operator">:</span> <span class="token punctuation">{</span>
+      some<span class="token operator">:</span> <span class="token punctuation">{</span>
+        score<span class="token operator">:</span> <span class="token punctuation">{</span>
+          gt<span class="token operator">:</span> <span class="token number">5</span>
+        <span class="token punctuation">}</span>
+      <span class="token punctuation">}</span><span class="token punctuation">,</span>
+      every<span class="token operator">:</span> <span class="token punctuation">{</span>
+        score<span class="token operator">:</span> <span class="token punctuation">{</span>
+          lte<span class="token operator">:</span> <span class="token number">50</span>
+        <span class="token punctuation">}</span>
+      <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+<span class="token keyword">const</span> post <span class="token operator">=</span> <span class="token keyword">await</span> blog<span class="token punctuation">.</span>post<span class="token punctuation">.</span><span class="token function">findFirst</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+  where<span class="token operator">:</span> <span class="token punctuation">{</span>
+    author<span class="token operator">:</span> <span class="token punctuation">{</span>
+      lastName<span class="token operator">:</span> <span class="token string">'aca'</span><span class="token punctuation">,</span>
+      age<span class="token operator">:</span> <span class="token punctuation">{</span>
+        gt<span class="token operator">:</span> <span class="token number">40</span>
+      <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+</code></pre></div></li> <li><p>insert</p> <ul><li><p>创建单个记录</p> <div class="language-typescript extra-class"><pre class="language-typescript"><code><span class="token keyword">const</span> user <span class="token operator">=</span> <span class="token keyword">await</span> blog<span class="token punctuation">.</span>user<span class="token punctuation">.</span><span class="token function">insert</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+  data<span class="token operator">:</span> <span class="token punctuation">{</span>
+    firstName<span class="token operator">:</span> <span class="token string">'tom'</span><span class="token punctuation">,</span>
+    lastName<span class="token operator">:</span> <span class="token string">'aca'</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+<span class="token comment">// 用户的 id 是自动生成的</span>
+</code></pre></div></li> <li><p>创建多个记录</p> <div class="language-typescript extra-class"><pre class="language-typescript"><code><span class="token keyword">const</span> users <span class="token operator">=</span> <span class="token keyword">await</span> blog<span class="token punctuation">.</span>user<span class="token punctuation">.</span><span class="token function">insert</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+  data<span class="token operator">:</span> <span class="token punctuation">[</span>
+    <span class="token punctuation">{</span>
+      firstName<span class="token operator">:</span> <span class="token string">'tom'</span><span class="token punctuation">,</span>
+      lastName<span class="token operator">:</span> <span class="token string">'aca'</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token punctuation">{</span>
+      firstName<span class="token operator">:</span> <span class="token string">'yao'</span><span class="token punctuation">,</span>
+      lastName<span class="token operator">:</span> <span class="token string">'min'</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">]</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+</code></pre></div></li> <li><p>创建冲突处理</p> <div class="language-typescript extra-class"><pre class="language-typescript"><code><span class="token keyword">const</span> users <span class="token operator">=</span> <span class="token keyword">await</span> blog<span class="token punctuation">.</span>user<span class="token punctuation">.</span><span class="token function">insert</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+  data<span class="token operator">:</span> <span class="token punctuation">[</span>
+    <span class="token punctuation">{</span>
+      firstName<span class="token operator">:</span> <span class="token string">'tom'</span><span class="token punctuation">,</span>
+      lastName<span class="token operator">:</span> <span class="token string">'aca'</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token punctuation">{</span>
+      firstName<span class="token operator">:</span> <span class="token string">'yao'</span><span class="token punctuation">,</span>
+      lastName<span class="token operator">:</span> <span class="token string">'min'</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">]</span><span class="token punctuation">,</span>
+  skipConflict<span class="token operator">:</span> <span class="token punctuation">{</span>
+    onConflict<span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">'firstName'</span><span class="token punctuation">,</span> <span class="token string">'lastName'</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+    <span class="token comment">// action: 'merge'</span>
+    action<span class="token operator">:</span> <span class="token string">'ignore'</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+</code></pre></div></li> <li><p>嵌套写入</p> <ul><li>嵌套写入允许您在单个事务中将关系数据写入数据库。</li> <li>为在单个查询中跨多个表创建、更新或删除数据提供事务性保证。如果查询的任何部分失败（例如，创建用户成功，但创建帖子失败），将回滚所有更改。</li> <li>支持数据模型支持的任何嵌套级别。</li> <li>当使用模型的 insert 或 update 查询时，关联字段可用。以下部分展示了每个查询可用的嵌套写入选项。</li></ul> <p>您可以同时创建一条记录和一个或多个关联记录。
+以下查询创建一条 User 记录和两条关联的 Post 记录</p> <div class="language-typescript extra-class"><pre class="language-typescript"><code><span class="token keyword">const</span> user <span class="token operator">=</span> <span class="token keyword">await</span> blog<span class="token punctuation">.</span>user<span class="token punctuation">.</span><span class="token function">insert</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+  data<span class="token operator">:</span> <span class="token punctuation">{</span>
+    firstName<span class="token operator">:</span> <span class="token string">'tom'</span><span class="token punctuation">,</span>
+    lastName<span class="token operator">:</span> <span class="token string">'aca'</span><span class="token punctuation">,</span>
+    posts<span class="token operator">:</span> <span class="token punctuation">{</span>
+      insert<span class="token operator">:</span> <span class="token punctuation">[</span>
+        <span class="token punctuation">{</span>
+          content<span class="token operator">:</span> <span class="token string">'content1'</span><span class="token punctuation">,</span>
+          score<span class="token operator">:</span> <span class="token number">5</span><span class="token punctuation">,</span>
+          categories<span class="token operator">:</span> <span class="token punctuation">{</span>
+            insert<span class="token operator">:</span> <span class="token punctuation">{</span>
+              name<span class="token operator">:</span> <span class="token string">'category'</span>
+            <span class="token punctuation">}</span>
+          <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span><span class="token punctuation">,</span>
+        <span class="token punctuation">{</span> content<span class="token operator">:</span> <span class="token string">'content2'</span><span class="token punctuation">,</span> score<span class="token operator">:</span> <span class="token number">10</span> <span class="token punctuation">}</span>
+      <span class="token punctuation">]</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+</code></pre></div><p>连接单条记录</p> <div class="language-typescript extra-class"><pre class="language-typescript"><code><span class="token keyword">const</span> post <span class="token operator">=</span> <span class="token keyword">await</span> blog<span class="token punctuation">.</span>post<span class="token punctuation">.</span><span class="token function">insert</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+  data<span class="token operator">:</span> <span class="token punctuation">{</span>
+    content<span class="token operator">:</span> <span class="token string">'content1'</span><span class="token punctuation">,</span>
+    score<span class="token operator">:</span> <span class="token number">5</span><span class="token punctuation">,</span>
+    author<span class="token operator">:</span> <span class="token punctuation">{</span>
+      connect<span class="token operator">:</span> <span class="token punctuation">{</span>
+        firstName<span class="token operator">:</span> <span class="token string">'tom'</span><span class="token punctuation">,</span>
+        lastName<span class="token operator">:</span> <span class="token string">'aca'</span>
+      <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+</code></pre></div><p>连接多条记录
+以下查询创建一个新的 User 记录，并将该记录 (connect) 连接到两个现有文章</p> <div class="language-typescript extra-class"><pre class="language-typescript"><code><span class="token keyword">const</span> user <span class="token operator">=</span> <span class="token keyword">await</span> blog<span class="token punctuation">.</span>user<span class="token punctuation">.</span><span class="token function">insert</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+  data<span class="token operator">:</span> <span class="token punctuation">{</span>
+    firstName<span class="token operator">:</span> <span class="token string">'tom'</span><span class="token punctuation">,</span>
+    lastName<span class="token operator">:</span> <span class="token string">'aca'</span><span class="token punctuation">,</span>
+    posts<span class="token operator">:</span> <span class="token punctuation">{</span>
+      connect<span class="token operator">:</span> <span class="token punctuation">[</span><span class="token punctuation">{</span> serial<span class="token operator">:</span> <span class="token string">'2'</span> <span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token punctuation">{</span> serial<span class="token operator">:</span> <span class="token string">'3'</span> <span class="token punctuation">}</span><span class="token punctuation">]</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+</code></pre></div><p>连接或创建记录
+如果关联记录可能存在也可能不存在，请使用 connectOrInsert 来连接关联记录</p> <div class="language-typescript extra-class"><pre class="language-typescript"><code><span class="token keyword">const</span> post <span class="token operator">=</span> <span class="token keyword">await</span> blog<span class="token punctuation">.</span>post<span class="token punctuation">.</span><span class="token function">insert</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+  data<span class="token operator">:</span> <span class="token punctuation">{</span>
+    content<span class="token operator">:</span> <span class="token string">'content1'</span><span class="token punctuation">,</span>
+    score<span class="token operator">:</span> <span class="token number">5</span><span class="token punctuation">,</span>
+    author<span class="token operator">:</span> <span class="token punctuation">{</span>
+      connectOrInsert<span class="token operator">:</span> <span class="token punctuation">{</span>
+        connect<span class="token operator">:</span> <span class="token punctuation">{</span>
+          firstName<span class="token operator">:</span> <span class="token string">'tom'</span><span class="token punctuation">,</span>
+          lastName<span class="token operator">:</span> <span class="token string">'aca'</span>
+        <span class="token punctuation">}</span><span class="token punctuation">,</span>
+        insert<span class="token operator">:</span> <span class="token punctuation">{</span>
+          firstName<span class="token operator">:</span> <span class="token string">'tom'</span><span class="token punctuation">,</span>
+          lastName<span class="token operator">:</span> <span class="token string">'aca'</span><span class="token punctuation">,</span>
+          age<span class="token operator">:</span> <span class="token number">20</span>
+        <span class="token punctuation">}</span>
+      <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+</code></pre></div></li></ul></li> <li><p>update</p> <ul><li>更新单个记录
+where 条件支持 id 字段或 unique 字段<div class="language-typescript extra-class"><pre class="language-typescript"><code><span class="token keyword">const</span> user <span class="token operator">=</span> <span class="token keyword">await</span> blog<span class="token punctuation">.</span>user<span class="token punctuation">.</span><span class="token function">update</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+  where<span class="token operator">:</span> <span class="token punctuation">{</span>
+    firstName<span class="token operator">:</span> <span class="token string">'tom'</span><span class="token punctuation">,</span>
+    lastName<span class="token operator">:</span> <span class="token string">'aca'</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  data<span class="token operator">:</span> <span class="token punctuation">{</span>
+    age<span class="token operator">:</span> <span class="token number">5</span><span class="token punctuation">,</span>
+    lastName<span class="token operator">:</span> <span class="token string">'aca2'</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+</code></pre></div></li> <li>嵌套更新
+<ul><li>insert<div class="language-typescript extra-class"><pre class="language-typescript"><code><span class="token keyword">const</span> user <span class="token operator">=</span> <span class="token keyword">await</span> blog<span class="token punctuation">.</span>user<span class="token punctuation">.</span><span class="token function">update</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+  where<span class="token operator">:</span> <span class="token punctuation">{</span>
+    firstName<span class="token operator">:</span> <span class="token string">'tom'</span><span class="token punctuation">,</span>
+    lastName<span class="token operator">:</span> <span class="token string">'aca'</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  data<span class="token operator">:</span> <span class="token punctuation">{</span>
+    age<span class="token operator">:</span> <span class="token number">5</span><span class="token punctuation">,</span>
+    lastName<span class="token operator">:</span> <span class="token string">'aca2'</span><span class="token punctuation">,</span>
+    posts<span class="token operator">:</span> <span class="token punctuation">{</span>
+      insert<span class="token operator">:</span> <span class="token punctuation">{</span>
+        content<span class="token operator">:</span> <span class="token string">'content1'</span><span class="token punctuation">,</span>
+        score<span class="token operator">:</span> <span class="token number">5</span><span class="token punctuation">,</span>
+        categories<span class="token operator">:</span> <span class="token punctuation">{</span>
+          insert<span class="token operator">:</span> <span class="token punctuation">{</span>
+            name<span class="token operator">:</span> <span class="token string">'category'</span>
+          <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span>
+      <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+</code></pre></div></li> <li>connect<div class="language-typescript extra-class"><pre class="language-typescript"><code><span class="token keyword">const</span> user <span class="token operator">=</span> <span class="token keyword">await</span> blog<span class="token punctuation">.</span>user<span class="token punctuation">.</span><span class="token function">update</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+  where<span class="token operator">:</span> <span class="token punctuation">{</span>
+    firstName<span class="token operator">:</span> <span class="token string">'tom'</span><span class="token punctuation">,</span>
+    lastName<span class="token operator">:</span> <span class="token string">'aca'</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  data<span class="token operator">:</span> <span class="token punctuation">{</span>
+    age<span class="token operator">:</span> <span class="token number">5</span><span class="token punctuation">,</span>
+    lastName<span class="token operator">:</span> <span class="token string">'aca2'</span><span class="token punctuation">,</span>
+    posts<span class="token operator">:</span> <span class="token punctuation">{</span>
+      connect<span class="token operator">:</span> <span class="token punctuation">{</span>
+        serial<span class="token operator">:</span> <span class="token string">'3'</span>
+      <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+</code></pre></div></li> <li>connectOrInsert<div class="language-typescript extra-class"><pre class="language-typescript"><code><span class="token keyword">const</span> post <span class="token operator">=</span> <span class="token keyword">await</span> blog<span class="token punctuation">.</span>post<span class="token punctuation">.</span><span class="token function">update</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+  where<span class="token operator">:</span> <span class="token punctuation">{</span>
+    serial<span class="token operator">:</span> <span class="token string">'2'</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  data<span class="token operator">:</span> <span class="token punctuation">{</span>
+    author<span class="token operator">:</span> <span class="token punctuation">{</span>
+      connectOrInsert<span class="token operator">:</span> <span class="token punctuation">{</span>
+        connect<span class="token operator">:</span> <span class="token punctuation">{</span>
+          firstName<span class="token operator">:</span> <span class="token string">'tom'</span><span class="token punctuation">,</span>
+          lastName<span class="token operator">:</span> <span class="token string">'aca'</span>
+        <span class="token punctuation">}</span><span class="token punctuation">,</span>
+        insert<span class="token operator">:</span> <span class="token punctuation">{</span>
+          firstName<span class="token operator">:</span> <span class="token string">'tom'</span><span class="token punctuation">,</span>
+          lastName<span class="token operator">:</span> <span class="token string">'aca'</span><span class="token punctuation">,</span>
+          age<span class="token operator">:</span> <span class="token number">18</span>
+        <span class="token punctuation">}</span>
+      <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+</code></pre></div></li> <li>disconnect<div class="language-typescript extra-class"><pre class="language-typescript"><code><span class="token keyword">const</span> user <span class="token operator">=</span> <span class="token keyword">await</span> blog<span class="token punctuation">.</span>user<span class="token punctuation">.</span><span class="token function">update</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+  where<span class="token operator">:</span> <span class="token punctuation">{</span>
+    id<span class="token operator">:</span> <span class="token string">'2'</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  data<span class="token operator">:</span> <span class="token punctuation">{</span>
+    posts<span class="token operator">:</span> <span class="token punctuation">{</span>
+      disconnect<span class="token operator">:</span> <span class="token punctuation">{</span>
+        serial<span class="token operator">:</span> <span class="token string">'2'</span>
+      <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+</code></pre></div></li> <li>set<div class="language-typescript extra-class"><pre class="language-typescript"><code><span class="token keyword">const</span> user <span class="token operator">=</span> <span class="token keyword">await</span> blog<span class="token punctuation">.</span>user<span class="token punctuation">.</span><span class="token function">update</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+  where<span class="token operator">:</span> <span class="token punctuation">{</span>
+    id<span class="token operator">:</span> <span class="token string">'2'</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  data<span class="token operator">:</span> <span class="token punctuation">{</span>
+    posts<span class="token operator">:</span> <span class="token punctuation">{</span>
+      set<span class="token operator">:</span> <span class="token punctuation">{</span>
+        serial<span class="token operator">:</span> <span class="token string">'2'</span>
+      <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+</code></pre></div></li> <li>delete<div class="language-typescript extra-class"><pre class="language-typescript"><code><span class="token keyword">const</span> user <span class="token operator">=</span> <span class="token keyword">await</span> blog<span class="token punctuation">.</span>user<span class="token punctuation">.</span><span class="token function">update</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+  where<span class="token operator">:</span> <span class="token punctuation">{</span>
+    id<span class="token operator">:</span> <span class="token string">'2'</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  data<span class="token operator">:</span> <span class="token punctuation">{</span>
+    posts<span class="token operator">:</span> <span class="token punctuation">{</span>
+      <span class="token keyword">delete</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+        serial<span class="token operator">:</span> <span class="token string">'2'</span>
+      <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+</code></pre></div></li> <li>deleteMany<div class="language-typescript extra-class"><pre class="language-typescript"><code><span class="token keyword">const</span> user <span class="token operator">=</span> <span class="token keyword">await</span> blog<span class="token punctuation">.</span>user<span class="token punctuation">.</span><span class="token function">update</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+  where<span class="token operator">:</span> <span class="token punctuation">{</span>
+    id<span class="token operator">:</span> <span class="token string">'2'</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  data<span class="token operator">:</span> <span class="token punctuation">{</span>
+    posts<span class="token operator">:</span> <span class="token punctuation">{</span>
+      deleteMany<span class="token operator">:</span> <span class="token punctuation">{</span>
+        score<span class="token operator">:</span> <span class="token punctuation">{</span>
+          lt<span class="token operator">:</span> <span class="token number">5</span>
+        <span class="token punctuation">}</span>
+      <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+</code></pre></div></li> <li>update<div class="language-typescript extra-class"><pre class="language-typescript"><code><span class="token keyword">const</span> user <span class="token operator">=</span> <span class="token keyword">await</span> blog<span class="token punctuation">.</span>user<span class="token punctuation">.</span><span class="token function">update</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+  where<span class="token operator">:</span> <span class="token punctuation">{</span>
+    id<span class="token operator">:</span> <span class="token string">'2'</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  data<span class="token operator">:</span> <span class="token punctuation">{</span>
+    posts<span class="token operator">:</span> <span class="token punctuation">{</span>
+      update<span class="token operator">:</span> <span class="token punctuation">{</span>
+        where<span class="token operator">:</span> <span class="token punctuation">{</span>
+          serial<span class="token operator">:</span> <span class="token string">'4'</span>
+        <span class="token punctuation">}</span><span class="token punctuation">,</span>
+        data<span class="token operator">:</span> <span class="token punctuation">{</span>
+          score<span class="token operator">:</span> <span class="token number">15</span>
+        <span class="token punctuation">}</span>
+      <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+</code></pre></div></li> <li>updateMany<div class="language-typescript extra-class"><pre class="language-typescript"><code><span class="token keyword">const</span> user <span class="token operator">=</span> <span class="token keyword">await</span> blog<span class="token punctuation">.</span>user<span class="token punctuation">.</span><span class="token function">update</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+  where<span class="token operator">:</span> <span class="token punctuation">{</span>
+    id<span class="token operator">:</span> <span class="token string">'2'</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  data<span class="token operator">:</span> <span class="token punctuation">{</span>
+    posts<span class="token operator">:</span> <span class="token punctuation">{</span>
+      updateMany<span class="token operator">:</span> <span class="token punctuation">{</span>
+        where<span class="token operator">:</span> <span class="token punctuation">{</span>
+          score<span class="token operator">:</span> <span class="token punctuation">{</span>
+            lt<span class="token operator">:</span> <span class="token number">10</span>
+          <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span><span class="token punctuation">,</span>
+        data<span class="token operator">:</span> <span class="token punctuation">{</span>
+          score<span class="token operator">:</span> <span class="token number">15</span>
+        <span class="token punctuation">}</span>
+      <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+</code></pre></div></li></ul></li></ul></li> <li><p>updateMany
+更新多个记录</p> <div class="language-typescript extra-class"><pre class="language-typescript"><code><span class="token keyword">const</span> updateUsers <span class="token operator">=</span> <span class="token keyword">await</span> blog<span class="token punctuation">.</span>user<span class="token punctuation">.</span><span class="token function">updateMany</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+  where<span class="token operator">:</span> <span class="token punctuation">{</span>
+    firstName<span class="token operator">:</span> <span class="token punctuation">{</span>
+      contains<span class="token operator">:</span> <span class="token string">'tom'</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  data<span class="token operator">:</span> <span class="token punctuation">{</span>
+    age<span class="token operator">:</span> <span class="token number">18</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+</code></pre></div></li> <li><p>upsert
+更新或创建记录
+以下查询使用 upsert() 更新具有特定姓名的 User 记录，如果该 User 记录不存在，则创建该记录</p> <div class="language-typescript extra-class"><pre class="language-typescript"><code><span class="token keyword">const</span> upsertUser <span class="token operator">=</span> <span class="token keyword">await</span> blog<span class="token punctuation">.</span>user<span class="token punctuation">.</span><span class="token function">updateMany</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+  where<span class="token operator">:</span> <span class="token punctuation">{</span>
+    firstName<span class="token operator">:</span> <span class="token string">'tom'</span><span class="token punctuation">,</span>
+    lastName<span class="token operator">:</span> <span class="token string">'aca'</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  insert<span class="token operator">:</span> <span class="token punctuation">{</span>
+    firstName<span class="token operator">:</span> <span class="token string">'tom'</span><span class="token punctuation">,</span>
+    lastName<span class="token operator">:</span> <span class="token string">'aca'</span><span class="token punctuation">,</span>
+    age<span class="token operator">:</span> <span class="token number">18</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  update<span class="token operator">:</span> <span class="token punctuation">{</span>
+    age<span class="token operator">:</span> <span class="token number">18</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+</code></pre></div></li> <li><p>delete</p> <div class="language-typescript extra-class"><pre class="language-typescript"><code><span class="token keyword">const</span> deleteUser <span class="token operator">=</span> <span class="token keyword">await</span> blog<span class="token punctuation">.</span>user<span class="token punctuation">.</span><span class="token function">delete</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+  where<span class="token operator">:</span> <span class="token punctuation">{</span>
+    firstName<span class="token operator">:</span> <span class="token string">'tom'</span><span class="token punctuation">,</span>
+    lastName<span class="token operator">:</span> <span class="token string">'aca'</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+</code></pre></div></li> <li><p>deleteMany</p> <div class="language-typescript extra-class"><pre class="language-typescript"><code><span class="token keyword">const</span> deleteUsers <span class="token operator">=</span> <span class="token keyword">await</span> blog<span class="token punctuation">.</span>user<span class="token punctuation">.</span><span class="token function">deleteMany</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+  where<span class="token operator">:</span> <span class="token punctuation">{</span>
+    firstName<span class="token operator">:</span> <span class="token punctuation">{</span>
+      contains<span class="token operator">:</span> <span class="token string">'tom'</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+</code></pre></div></li> <li><p>聚合函数：count countDistinct sum sumDistinct avg avgDistinct max mix，集中放在每个表的$命名空间中</p></li> <li><p>raw：对每个数据库生成一个 raw 函数，用$.raw 表示<br></p></li> <li><p>select</p> <ul><li>默认情况下，当查询返回记录（而不是计数）时，结果包括模型的所有标量字段（包括枚举）<div class="language-typescript extra-class"><pre class="language-typescript"><code><span class="token keyword">const</span> users <span class="token operator">=</span> <span class="token keyword">await</span> blog<span class="token punctuation">.</span>user<span class="token punctuation">.</span><span class="token function">findMany</span><span class="token punctuation">(</span><span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">)</span>
+<span class="token keyword">const</span> users <span class="token operator">=</span> <span class="token keyword">await</span> blog<span class="token punctuation">.</span>user<span class="token punctuation">.</span><span class="token function">findMany</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+  select<span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token string-property property">'*'</span><span class="token operator">:</span> <span class="token boolean">true</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+</code></pre></div></li> <li>选择特定字段<div class="language-typescript extra-class"><pre class="language-typescript"><code><span class="token keyword">const</span> user <span class="token operator">=</span> <span class="token keyword">await</span> blog<span class="token punctuation">.</span>user<span class="token punctuation">.</span><span class="token function">findFirst</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+  where<span class="token operator">:</span> <span class="token punctuation">{</span>
+    firstName<span class="token operator">:</span> <span class="token punctuation">{</span>
+      contains<span class="token operator">:</span> <span class="token string">'tom'</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  select<span class="token operator">:</span> <span class="token punctuation">{</span>
+    age<span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+    firstName<span class="token operator">:</span> <span class="token boolean">true</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+</code></pre></div></li> <li>通过选择关系字段返回嵌套对象
+你可以任意深度地嵌套查询。<div class="language-typescript extra-class"><pre class="language-typescript"><code><span class="token keyword">const</span> users <span class="token operator">=</span> <span class="token keyword">await</span> blog<span class="token punctuation">.</span>user<span class="token punctuation">.</span><span class="token function">findFirst</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+  select<span class="token operator">:</span> <span class="token punctuation">{</span>
+    firstName<span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+    lastName<span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+    posts<span class="token operator">:</span> <span class="token punctuation">{</span>
+      content<span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+      score<span class="token operator">:</span> <span class="token boolean">true</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+<span class="token keyword">const</span> users <span class="token operator">=</span> <span class="token keyword">await</span> blog<span class="token punctuation">.</span>user<span class="token punctuation">.</span><span class="token function">findFirst</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+  select<span class="token operator">:</span> <span class="token punctuation">{</span>
+    firstName<span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+    lastName<span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+    posts<span class="token operator">:</span> <span class="token punctuation">{</span>
+      where<span class="token operator">:</span> <span class="token punctuation">{</span>
+        score<span class="token operator">:</span> <span class="token punctuation">{</span>
+          lt<span class="token operator">:</span> <span class="token number">5</span>
+        <span class="token punctuation">}</span>
+      <span class="token punctuation">}</span><span class="token punctuation">,</span>
+      orderBy<span class="token operator">:</span> <span class="token punctuation">{</span>
+        score<span class="token operator">:</span> <span class="token string">'desc'</span>
+      <span class="token punctuation">}</span><span class="token punctuation">,</span>
+      select<span class="token operator">:</span> <span class="token punctuation">{</span>
+        content<span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+        score<span class="token operator">:</span> <span class="token boolean">true</span>
+      <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+</code></pre></div></li></ul></li> <li><p>omit
+排除特定字段</p> <div class="language-typescript extra-class"><pre class="language-typescript"><code>  <span class="token keyword">const</span> user <span class="token operator">=</span> <span class="token keyword">await</span> blog<span class="token punctuation">.</span>user<span class="token punctuation">.</span><span class="token function">findFirst</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+    where<span class="token operator">:</span> <span class="token punctuation">{</span>
+      firstName<span class="token operator">:</span> <span class="token punctuation">{</span>
+        contains<span class="token operator">:</span> <span class="token string">'tom'</span>
+      <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    omit<span class="token operator">:</span> <span class="token punctuation">{</span>
+      age<span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+      firstName<span class="token operator">:</span> <span class="token boolean">true</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span><span class="token punctuation">)</span>
+</code></pre></div></li></ul></li> <li><p>事务：数据库事务使用如下：</p></li></ul> <div class="language-typescript extra-class"><pre class="language-typescript"><code>  <span class="token keyword">const</span> trx <span class="token operator">=</span> <span class="token operator">&lt;</span>顶级命名空间名<span class="token operator">&gt;</span><span class="token punctuation">.</span><span class="token function">transaction</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+  <span class="token comment">// 注意： 一定要使用commit()和rollback()</span>
+  <span class="token keyword">try</span> <span class="token punctuation">{</span>
+    <span class="token keyword">await</span> trx<span class="token punctuation">.</span><span class="token operator">&lt;</span>表名<span class="token operator">&gt;</span><span class="token punctuation">.</span><span class="token operator">&lt;</span>方法<span class="token operator">&gt;</span>
+    <span class="token keyword">await</span> trx<span class="token punctuation">.</span><span class="token function">commit</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+  <span class="token punctuation">}</span> <span class="token keyword">catch</span><span class="token punctuation">(</span>e<span class="token punctuation">)</span><span class="token punctuation">{</span>
+    <span class="token keyword">await</span> trx<span class="token punctuation">.</span><span class="token function">rollback</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+  <span class="token punctuation">}</span>
+
+</code></pre></div><p>注意：前端也有事务，但并不能实现真正的事务，仅仅是为了使用事务的方式书写代码，便于以后将代码迁移到后端时，减少代码改动！</p> <ul><li>$ApiBridge：该方法是桥接前端传到后端的数据，会解析成前端相同的方法名和参数，再调用后端相同的方法，并将结果返回</li></ul> <h2 id="rpc-函数"><a href="#rpc-函数" class="header-anchor">#</a> RPC 函数</h2> <p>RPC 函数定义在后端，需存放在 API 目录下的 RPC 文件夹（如：src/aca.server/RPC），其写法如：</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">export</span> <span class="token keyword">async</span> <span class="token keyword">function</span> <span class="token function">fn</span><span class="token punctuation">(</span><span class="token parameter"><span class="token literal-property property">ctx</span><span class="token operator">:</span> any<span class="token punctuation">,</span> <span class="token literal-property property">param</span><span class="token operator">:</span> string</span><span class="token punctuation">)</span><span class="token operator">:</span> stirng <span class="token punctuation">{</span>
+  <span class="token keyword">return</span> param
+<span class="token punctuation">}</span>
+</code></pre></div><p>特别注意：</p> <ol><li>函数的第一个参数为上下文，在生成前端的同名函数时，会把这个参数省去</li> <li>如果在 RPC 目录下有多个文件，则 aca.ts 会自动把 RPC 目录下的 index.ts 文件重写为其他页面的引用导出，此时不能将 RPC 函数写在 index.ts 中</li> <li>支持命名空间</li></ol> <h2 id="安全性"><a href="#安全性" class="header-anchor">#</a> 安全性</h2> <ul><li>前端数据库 API 只建议在开发阶段使用，在生产环境禁止使用</li> <li>生产环境访问后端的数据都必须经过严格的数据校验</li> <li>生产环境 web 访问使用 https</li> <li>带 token 访问后端</li> <li>生产环境禁止使用 raw 函数</li></ul> <h2 id="开发建议"><a href="#开发建议" class="header-anchor">#</a> 开发建议</h2> <ul><li>在做 web 开发时，尽量将访问后端的方法集中在一个文件夹，不要直接在前端逻辑中嵌入调用数据库方法</li> <li>如果在一个逻辑需要多次访问后端数据库，尽量写成事务的方式，待代码稳定后，把代码移到后端，写成一个 RPC 函数，供前端调用</li> <li>前端调用后端的函数建议如下写法，迁移到后端时，代码改动最小：</li></ul> <div class="language-typescript extra-class"><pre class="language-typescript"><code><span class="token comment">// ctx为后端的上下文，前端可以定义一个变量模拟上下文</span>
+<span class="token keyword">async</span> <span class="token keyword">function</span> <span class="token function">fn</span><span class="token punctuation">(</span>param<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token comment">// 当这个函数迁移到后端成为RPC函数时</span>
+  <span class="token comment">// 取消下面这行注释，调用后端函数</span>
+  <span class="token comment">// return $RPC.fn(param)</span>
+  <span class="token keyword">let</span> ctx
+  <span class="token keyword">const</span> trx <span class="token operator">=</span> <span class="token operator">&lt;</span>数据库<span class="token operator">&gt;</span><span class="token punctuation">.</span><span class="token function">transaction</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+  <span class="token keyword">try</span> <span class="token punctuation">{</span>
+    trx<span class="token punctuation">.</span><span class="token operator">&lt;</span>表名<span class="token operator">&gt;</span><span class="token punctuation">.</span><span class="token operator">&lt;</span>方法名<span class="token operator">&gt;</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token keyword">await</span> trx<span class="token punctuation">.</span><span class="token function">commit</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+  <span class="token punctuation">}</span> <span class="token keyword">catch</span> <span class="token punctuation">(</span>e<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">await</span> trx<span class="token punctuation">.</span><span class="token function">rollback</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+<span class="token comment">// 以上代码迁移到后端，做成RPC函数，改动如下(将ctx作为函数的入参)：</span>
+<span class="token keyword">async</span> <span class="token keyword">function</span> <span class="token function">fn</span><span class="token punctuation">(</span>ctx<span class="token punctuation">,</span> param<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">const</span> trx <span class="token operator">=</span> <span class="token operator">&lt;</span>数据库<span class="token operator">&gt;</span><span class="token punctuation">.</span><span class="token function">transaction</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+  <span class="token keyword">try</span> <span class="token punctuation">{</span>
+    trx<span class="token punctuation">.</span><span class="token operator">&lt;</span>表名<span class="token operator">&gt;</span><span class="token punctuation">.</span><span class="token operator">&lt;</span>方法名<span class="token operator">&gt;</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token keyword">await</span> trx<span class="token punctuation">.</span><span class="token function">commit</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+  <span class="token punctuation">}</span> <span class="token keyword">catch</span> <span class="token punctuation">(</span>e<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">await</span> trx<span class="token punctuation">.</span><span class="token function">rollback</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre></div><h2 id="交流群"><a href="#交流群" class="header-anchor">#</a> 交流群</h2> <p>代码及文档还处于内测阶段，欢迎提出宝贵意见，qq 群：638713641
+<img src="/qq.jpg"></p></div> <footer class="page-edit"><!----> <!----></footer> <!----> </main></div><div class="global-ui"></div></div>
+    <script src="/assets/js/app.8e4a1e90.js" defer></script><script src="/assets/js/3.3a424c07.js" defer></script><script src="/assets/js/14.42e652da.js" defer></script>
+  </body>
+</html>

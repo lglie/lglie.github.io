@@ -1,0 +1,619 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Guide | Aca.ts</title>
+    <meta name="generator" content="VuePress 1.9.7">
+    
+    <meta name="description" content="CLI that automatically ">
+    
+    <link rel="preload" href="/assets/css/0.styles.1f8a509b.css" as="style"><link rel="preload" href="/assets/js/app.8e4a1e90.js" as="script"><link rel="preload" href="/assets/js/3.3a424c07.js" as="script"><link rel="preload" href="/assets/js/10.d2928415.js" as="script"><link rel="prefetch" href="/assets/js/11.4b9e63c0.js"><link rel="prefetch" href="/assets/js/12.e1dfbe22.js"><link rel="prefetch" href="/assets/js/13.ea3558af.js"><link rel="prefetch" href="/assets/js/14.42e652da.js"><link rel="prefetch" href="/assets/js/15.310d602b.js"><link rel="prefetch" href="/assets/js/16.b964bc73.js"><link rel="prefetch" href="/assets/js/4.3a5d42a7.js"><link rel="prefetch" href="/assets/js/5.0150813a.js"><link rel="prefetch" href="/assets/js/6.18a98952.js"><link rel="prefetch" href="/assets/js/7.1f9cb122.js"><link rel="prefetch" href="/assets/js/8.fb43af7d.js"><link rel="prefetch" href="/assets/js/9.5a055c16.js"><link rel="prefetch" href="/assets/js/vendors~docsearch.271cdf46.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.1f8a509b.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><!----> <span class="site-name">Aca.ts</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/guide/" class="nav-link">
+  Guide
+</a></div><div class="nav-item"><a href="/question/" class="nav-link">
+  Q &amp; A
+</a></div><div class="nav-item"><a href="/changelog.html" class="nav-link">
+  Changelog
+</a></div><div class="nav-item"><a href="https://github.com/lglie/aca.ts" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  GitHub
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Languages" class="dropdown-title"><span class="title">Languages</span> <span class="arrow down"></span></button> <button type="button" aria-label="Languages" class="mobile-dropdown-title"><span class="title">Languages</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/guide.html" aria-current="page" class="nav-link router-link-exact-active router-link-active">
+  English
+</a></li><li class="dropdown-item"><!----> <a href="/zh/guide.html" class="nav-link">
+  简体中文
+</a></li></ul></div></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/guide/" class="nav-link">
+  Guide
+</a></div><div class="nav-item"><a href="/question/" class="nav-link">
+  Q &amp; A
+</a></div><div class="nav-item"><a href="/changelog.html" class="nav-link">
+  Changelog
+</a></div><div class="nav-item"><a href="https://github.com/lglie/aca.ts" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  GitHub
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Languages" class="dropdown-title"><span class="title">Languages</span> <span class="arrow down"></span></button> <button type="button" aria-label="Languages" class="mobile-dropdown-title"><span class="title">Languages</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/guide.html" aria-current="page" class="nav-link router-link-exact-active router-link-active">
+  English
+</a></li><li class="dropdown-item"><!----> <a href="/zh/guide.html" class="nav-link">
+  简体中文
+</a></li></ul></div></div> <!----></nav>  <ul class="sidebar-links"><li><section class="sidebar-group depth-0"><p class="sidebar-heading open"><span>Guide</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/guide.html#about-aca-ts" class="sidebar-link">About Aca.ts</a><ul class="sidebar-sub-headers"></ul></li><li><a href="/guide.html#features" class="sidebar-link">Features</a><ul class="sidebar-sub-headers"></ul></li><li><a href="/guide.html#quick-started" class="sidebar-link">Quick started</a><ul class="sidebar-sub-headers"></ul></li><li><a href="/guide.html#configuration" class="sidebar-link">Configuration</a><ul class="sidebar-sub-headers"></ul></li><li><a href="/guide.html#cli" class="sidebar-link">CLI</a><ul class="sidebar-sub-headers"></ul></li><li><a href="/guide.html#orm" class="sidebar-link">ORM</a><ul class="sidebar-sub-headers"></ul></li><li><a href="/guide.html#database-api" class="sidebar-link">Database API</a><ul class="sidebar-sub-headers"></ul></li><li><a href="/guide.html#rpc-function" class="sidebar-link">RPC function</a><ul class="sidebar-sub-headers"></ul></li><li><a href="/guide.html#safety" class="sidebar-link">Safety</a><ul class="sidebar-sub-headers"></ul></li><li><a href="/guide.html#development-advice" class="sidebar-link">Development advice</a><ul class="sidebar-sub-headers"></ul></li></ul></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="guide"><a href="#guide" class="header-anchor">#</a> Guide</h1> <h2 id="about-aca-ts"><a href="#about-aca-ts" class="header-anchor">#</a> About Aca.ts</h2> <p>Aca.ts is a full stack development tool that is only used for front-end development, which can automatically synchronize database schema and generate database query APIs according to a typescript ORM document; Automatically generate the frontend access backend APIs according to the backend functions and database query APIs, so that the backend code can be developed on the frontend.</p> <h2 id="features"><a href="#features" class="header-anchor">#</a> Features</h2> <ul><li>Support database transactions</li> <li>Support mapping of database tables and columns (map)</li> <li>Support multiple databases</li> <li>Supports table and function namespaces</li> <li>Automatic generation of frontend and backend data interaction interfaces (like RPC, no need to define routes)</li> <li>Framework independent, applicable to any existing frontend and backend JS frameworks</li> <li>The backend code is developed and tested on the frontend, no communication with the backend</li> <li>The TS code prompt is perfect and can be developed without looking at the document</li></ul> <h2 id="quick-started"><a href="#quick-started" class="header-anchor">#</a> Quick started</h2> <p>Prerequisites: Please install (if not installed) node.js(v18.0.0^) and ts-node.<br>
+Run the following commands in sequence in the terminal：</p> <div class="language-bash extra-class"><pre class="language-bash"><code>$ <span class="token function">npm</span> <span class="token function">install</span> -g aca.ts
+$ aca create acaProject <span class="token operator">&amp;&amp;</span> <span class="token builtin class-name">cd</span> acaProject
+$ aca server
+$ aca client
+$ aca up
+</code></pre></div><p>Then, start server and client in two seperate terminals.<br>
+Run in the server directory:</p> <div class="language-bash extra-class"><pre class="language-bash"><code>$ <span class="token function">npm</span> run dev
+</code></pre></div><p>Run in the client directory：</p> <div class="language-bash extra-class"><pre class="language-bash"><code>$ <span class="token function">npm</span> start
+</code></pre></div><p>The example has a built-in Better-Sqlite3 database. Clicking the button on the opened page will create a database user table record and return its id.<br>
+For specific code, please visit App.tsx page, which shows how to use database API and RPC functions on the frontend.</p> <h2 id="configuration"><a href="#configuration" class="header-anchor">#</a> Configuration</h2> <p>config.json is located in the .aca directory, and the specific fields are described as follows：</p> <ul><li><p>ORM: The name of the typescript ORM file you wrote yourself, and the ORM file must be stored in the .aca directory</p></li> <li><p>databases: Database related configuration (supports multiple databases), the field name is the variable name specified when the database model is defined in the ORM file. The default is: default, and the database configurations that can be specified are:</p> <ul><li>tableNameWithNamespace：The default is true. When defining the ORM, it supports the use of namespaces to classify each table definition. When creating a database, aca should also add the namespace prefix. If it is false, the name of the database table is just the name of the class you defined.</li> <li>onlyApi: The default is false. When you need to use a database provided by a third party in your project, you cannot modify such a database schema, but only generate an API without synchronizing the database schema</li> <li>idDefaultType：The default is &quot;cuid&quot;. When the id type is not specified, this type is used by default</li> <li>foreignKeyConstraint: Defaults to true, foreign key tables use foreign key constraints</li> <li>onUpdate onDelete：The default is &quot;cascade&quot;. When the primary key is modified or deleted, the action of the foreign key</li> <li>connectOption：Database connection options, refer to Knex.js connection options</li></ul></li> <li><p>serverApps；It is a dictionary object. All backend apps under the project are registered here. You can also fill in the relevant information of the backend apps you created here (the same effect as adding name by aca add)</p> <ul><li>Field name: the name of the app，</li> <li>apiDir：The path name of the generated API (relative to the App), the default is: &quot;src/aca.server&quot;</li></ul></li> <li><p>clientApps：It is a dictionary object. All frontend apps under the project are registered here. You can also fill in the relevant information of the frontend apps you created here (the same effect as adding name by aca add)</p> <ul><li>Field name: the name of the app，</li> <li>apiDir：The path name of the generated API (relative to the App), the default is &quot;src/aca.client&quot;</li> <li>allowRPCs：It is an array, indicating that the app can only access the list of RPC servers in the backend. If there is no such field, the RPC of all backend apps under the project can be accessed by default.</li></ul></li></ul> <h2 id="cli"><a href="#cli" class="header-anchor">#</a> CLI</h2> <p>Aca.ts has the following commands：</p> <ol><li>Create a new project：</li></ol> <div class="language-bash extra-class"><pre class="language-bash"><code>   $ aca create <span class="token punctuation">[</span>projectName<span class="token punctuation">]</span>
+</code></pre></div><p>projectName: Your own project name<br>
+Running this command will create a projectName folder in the current directory, which contains a folder named .aca, and the configuration file config.json is located under the .aca folder<br>
+The following commands need to be run in the projectName directory or the created app directory.</p> <ol start="2"><li>Create a backend app:</li></ol> <div class="language-bash extra-class"><pre class="language-bash"><code>   $ aca server <span class="token operator">&lt;</span>appName<span class="token operator">&gt;</span>
+</code></pre></div><p>appName default：server<br></p> <p>Create a simple backend service based on the koa framework</p> <ol start="3"><li>Create a frontend app:</li></ol> <div class="language-bash extra-class"><pre class="language-bash"><code>   $ aca client <span class="token operator">&lt;</span>appName<span class="token operator">&gt;</span>
+</code></pre></div><p>appName default：client<br>
+Call create-react-app to create a react app</p> <ol start="4"><li>Add the app you created to the project (make sure the app is in the aca project directory)：</li></ol> <div class="language-bash extra-class"><pre class="language-bash"><code>   $ aca <span class="token function">add</span> <span class="token operator">&lt;</span>appName<span class="token operator">&gt;</span> --server --client --apiDir <span class="token operator">&lt;</span>path<span class="token operator">&gt;</span>
+</code></pre></div><p>appName: The name of the app you created for yourself<br>
+--server(-s)：indicates that it is a backend App<br>
+--client(-c)：indicates that it is a frontend App<br>
+--apiDir(-a)：The path where the generated API is stored，<br>
+path：Relative to the App path, the default is src/aca.server or src/aca.client，If -s and -c are specified at the same time, -a uses the default path</p> <ol start="5"><li>Generate API:</li></ol> <div class="language-bash extra-class"><pre class="language-bash"><code>   $ aca up
+</code></pre></div><p>Generate frontend and backend API and automatically synchronize database schemas (If there is any change). The API is stored in the directory specified by each App in the project</p> <ol start="6"><li>Database schema rollback:</li></ol> <div class="language-bash extra-class"><pre class="language-bash"><code>   $ aca rollback
+</code></pre></div><p>Restore the database schema to the last change. Note: the data of the deleted column cannot be restored</p> <h2 id="orm"><a href="#orm" class="header-anchor">#</a> ORM</h2> <p>The definition of ORM can be written by referring to example-blog.ts, the details are as follows：<br>
+Supported scalar data types are：id、boolean、string、int、float、object（json object）、Date、enum（enumeration type）</p> <ul><li><p>id：Each table has only one id and supports 5 types：cuid uuid autoincrement int string, written as：id['autoincrement']，if only id is written, it is specified according to .aca/config.json/idDefaultType. If not exists, the default is：cuid</p></li> <li><p>boolean：boolean type（true false）</p></li> <li><p>string：string type</p></li> <li><p>int：integer type</p></li> <li><p>float：floating point type</p></li> <li><p>object：json object type</p></li> <li><p>Date：datetime type</p></li> <li><p>enum：custom enum type</p></li> <li><p>scalar arrays：currently only support pg</p></li> <li><p>Define a database: use a top-level namespace to represent a database, the name of the namespace points to one of your databases, contains an optional constant definition and multiple class definitions, class definitions can also be organized using namespaces</p></li> <li><p>Optional constant definition: the type is string whose value is a field name defined in .aca/config.json/database. If there is no such definition, the default is: default</p></li> <li><p>To define a table: use the class definition syntax:</p> <ul><li>Database table name: class name</li> <li>Column name of database table: field name</li> <li>Data type of column: Field Type</li> <li>Relationship between tables: field name, type is the name of the table</li></ul></li> <li><p>Decorator：</p> <ul><li>class decorator：integrated in C，with map、id、unique、index、deprecated
+<ul><li>@C.map(name)；the name of the database table is：name</li> <li>@C.id(fields)：specify id, fields: an array of column names</li> <li>@C.unique(fields)：specified as a unique constraint, fields: an array of column names</li> <li>@C.index(fields)：Specify the index to build the table, fields: an array of column names</li> <li>@C.deprecated；Indicates that the table has been obsolete</li></ul></li> <li>Class member decorator：integrated in the M decorator，including：unique、index、dbType、createdAt、updatedAt、foreign、deprecated
+<ul><li>@M.unique：indicates that the field is a unique field</li> <li>@M.index：indicates that the field is an index field</li> <li>@M.dbType(name)：defines the database type of the field, name must be the name of the type supported by the database, such as varchar(23)</li> <li>@M.createdAt、@M.updatedAt：timestamp of data record creation and modification, automatically populated by the system</li> <li>@M.foreign(obj)：see the relationship between tables</li> <li>@M.deprecated；indicates that the column has been deprecated</li></ul></li></ul></li> <li><p>Relationships between tables：
+Both relational tables have a class field that points to the opposite table, and the type of the field is the table name of the opposite table. If it contains a namespace, the namespace prefix is ​​also required.<br>
+There are one-to-one, one-to-many, and many-to-many relationships between tables<br>
+One-to-one and one-to-many relationships need to specify @M.foreign(obj) in the corresponding foreign key field, and the foreign key field will also be established in this table<br>
+How to write obj ：</p> <ul><li>If obj is a string or string array, then obj is the foreign key name, which refers to a field of type id in the primary key table by default</li> <li>If obj is an object, it has the following fields:
+<ul><li>keys: is a string or array of strings whose members are foreign key names (aca.ts are automatically added to the database table</li> <li>references：is a string or array of strings, referring to the id or unique field name of the primary key table</li> <li>onUpdate、onDelete：When the primary key is modified or deleted, the action of the foreign key table, if default, adopts the corresponding setting under the corresponding field of .aca/config.json/databases</li></ul></li> <li>One-to-one relationship: at least one of the primary key field or foreign key field is optional (add a question mark (?) after the field name)</li> <li>One-to-many relationship: add the array type after the primary key table type (add square brackets ([]) after the type), and the foreign key field is automatically optional.</li> <li>Many-to-many relationship: The types of the two tables are both array types. At this time, aca.ts will automatically create a many-to-many relationship mapping table, which is not visible to the outside world. If it needs to be visible, you need to explicitly define the many-to-many relationship mapping table<br>
+Note: When there are multiple relationships between two tables, there is at most one set of relationship without specifying the object field name in the type, and the other relationships must specify the field name of the opposite table in the type</li></ul></li></ul> <h2 id="database-api"><a href="#database-api" class="header-anchor">#</a> Database API</h2> <ul><li><p>ts types：$Enum $TB $TbOper $ApiBridge</p> <ul><li><p>$Enum：All custom enumeration types are concentrated here, referenced in the code as follows:：$Enum['enum name']</p></li> <li><p>$ApiBridge：Data format definition for connecting frontend and backend：</p> <div class="language-typescript extra-class"><pre class="language-typescript"><code><span class="token keyword">export</span> <span class="token keyword">type</span> <span class="token class-name">$ApiBridge</span> <span class="token operator">=</span>
+  <span class="token operator">|</span> <span class="token punctuation">{</span>
+      kind<span class="token operator">:</span> <span class="token string">'rpc'</span>
+      method<span class="token operator">:</span> <span class="token builtin">string</span><span class="token punctuation">[</span><span class="token punctuation">]</span>
+      args<span class="token operator">:</span> <span class="token builtin">any</span>
+    <span class="token punctuation">}</span>
+  <span class="token operator">|</span> <span class="token punctuation">{</span>
+      kind<span class="token operator">:</span> <span class="token string">'orm'</span>
+      query<span class="token operator">:</span> <span class="token builtin">string</span>
+      dbVar<span class="token operator">:</span> <span class="token builtin">string</span>
+      method<span class="token operator">:</span> <span class="token builtin">string</span><span class="token punctuation">[</span><span class="token punctuation">]</span>
+      args<span class="token operator">:</span> <span class="token builtin">any</span>
+    <span class="token punctuation">}</span>
+  <span class="token operator">|</span> <span class="token punctuation">{</span>
+      kind<span class="token operator">:</span> <span class="token string">'raw'</span>
+      dbVar<span class="token operator">:</span> <span class="token builtin">string</span>
+      args<span class="token operator">:</span> <span class="token builtin">any</span>
+    <span class="token punctuation">}</span>
+</code></pre></div></li></ul></li> <li><p>Database API: For all defined ORM, generate an instantiated class object each, the object name is the top-level namespace name, and generate processing methods for each table, including:</p> <ul><li><p>findOne
+The where condition supports the id or unique field</p> <div class="language-typescript extra-class"><pre class="language-typescript"><code><span class="token comment">// By unique identifier</span>
+<span class="token keyword">const</span> user <span class="token operator">=</span> <span class="token keyword">await</span> blog<span class="token punctuation">.</span>user<span class="token punctuation">.</span><span class="token function">findOne</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+  where<span class="token operator">:</span> <span class="token punctuation">{</span>
+    firstName<span class="token operator">:</span> <span class="token string">'tom'</span><span class="token punctuation">,</span>
+    lastName<span class="token operator">:</span> <span class="token string">'aca'</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+<span class="token comment">// By ID</span>
+<span class="token keyword">const</span> user <span class="token operator">=</span> <span class="token keyword">await</span> blog<span class="token punctuation">.</span>user<span class="token punctuation">.</span><span class="token function">findOne</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+  where<span class="token operator">:</span> <span class="token punctuation">{</span>
+    id<span class="token operator">:</span> <span class="token number">99</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+</code></pre></div></li> <li><p>findMany
+filter criteria and operators</p> <ul><li>eq value equal to n。</li> <li>not value is not equal to n。</li> <li>in value n exists in the list。</li> <li>lt value n is less than x。</li> <li>lte value n is less than or equal to x。</li> <li>gt value n is greater than x。</li> <li>gte value n is greater than or equal to x。</li> <li>contains value n contains x。</li> <li>like value n contains x。</li> <li>startsWith value n starts with x。</li> <li>endsWith value n ends with x。</li> <li>AND all conditions must return true. Alternatively, pass the object list to the where clause - the AND operator is not required。</li> <li>OR one or more conditions must return true。</li> <li>relationship filter
+<ul><li>some return all one or more (&quot;some&quot;) related records that match the filtering criteria。</li> <li>every return all records that meet the following criteria: all (&quot;every&quot;) related records match the filtering criteria。</li> <li>none return all records that meet the following conditions: zero related records match the filtering criteria。</li></ul></li></ul> <div class="language-typescript extra-class"><pre class="language-typescript"><code><span class="token comment">// returns all User records:</span>
+<span class="token keyword">const</span> users <span class="token operator">=</span> <span class="token keyword">await</span> blog<span class="token punctuation">.</span>user<span class="token punctuation">.</span><span class="token function">findMany</span><span class="token punctuation">(</span><span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">)</span>
+<span class="token comment">// Filter by a single field value</span>
+<span class="token keyword">const</span> users <span class="token operator">=</span> <span class="token keyword">await</span> blog<span class="token punctuation">.</span>user<span class="token punctuation">.</span><span class="token function">findMany</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+  where<span class="token operator">:</span> <span class="token punctuation">{</span>
+    lastName<span class="token operator">:</span> <span class="token punctuation">{</span>
+      endsWith<span class="token operator">:</span> <span class="token string">'aca'</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+<span class="token comment">// Filter by multiple field values</span>
+<span class="token keyword">const</span> users <span class="token operator">=</span> <span class="token keyword">await</span> blog<span class="token punctuation">.</span>user<span class="token punctuation">.</span><span class="token function">findMany</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+  where<span class="token operator">:</span> <span class="token punctuation">{</span>
+    firstName<span class="token operator">:</span> <span class="token punctuation">{</span>
+      startsWith<span class="token operator">:</span> <span class="token string">'t'</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    age<span class="token operator">:</span> <span class="token punctuation">{</span>
+      lt<span class="token operator">:</span> <span class="token number">18</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token constant">OR</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+      age<span class="token operator">:</span> <span class="token punctuation">{</span>
+        gt<span class="token operator">:</span> <span class="token number">18</span>
+      <span class="token punctuation">}</span><span class="token punctuation">,</span>
+      <span class="token constant">AND</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+        gender<span class="token operator">:</span> Gender<span class="token punctuation">.</span>Male
+      <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  orderBy<span class="token operator">:</span> <span class="token punctuation">{</span>
+    id<span class="token operator">:</span> <span class="token string">'desc'</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  limit<span class="token operator">:</span> <span class="token number">100</span><span class="token punctuation">,</span>
+  offset<span class="token operator">:</span> <span class="token number">0</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+<span class="token comment">// Filter by related record field values</span>
+<span class="token keyword">const</span> users <span class="token operator">=</span> <span class="token keyword">await</span> blog<span class="token punctuation">.</span>user<span class="token punctuation">.</span><span class="token function">findMany</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+  where<span class="token operator">:</span> <span class="token punctuation">{</span>
+    lastName<span class="token operator">:</span> <span class="token punctuation">{</span>
+      endsWith<span class="token operator">:</span> <span class="token string">'aca'</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    posts<span class="token operator">:</span> <span class="token punctuation">{</span>
+      some<span class="token operator">:</span> <span class="token punctuation">{</span>
+        score<span class="token operator">:</span> <span class="token punctuation">{</span>
+          gt<span class="token operator">:</span> <span class="token number">5</span>
+        <span class="token punctuation">}</span>
+      <span class="token punctuation">}</span><span class="token punctuation">,</span>
+      every<span class="token operator">:</span> <span class="token punctuation">{</span>
+        score<span class="token operator">:</span> <span class="token punctuation">{</span>
+          lte<span class="token operator">:</span> <span class="token number">50</span>
+        <span class="token punctuation">}</span>
+      <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+<span class="token keyword">const</span> posts <span class="token operator">=</span> <span class="token keyword">await</span> blog<span class="token punctuation">.</span>post<span class="token punctuation">.</span><span class="token function">findMany</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+  where<span class="token operator">:</span> <span class="token punctuation">{</span>
+    author<span class="token operator">:</span> <span class="token punctuation">{</span>
+      lastName<span class="token operator">:</span> <span class="token string">'aca'</span><span class="token punctuation">,</span>
+      age<span class="token operator">:</span> <span class="token punctuation">{</span>
+        gt<span class="token operator">:</span> <span class="token number">40</span>
+      <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+</code></pre></div></li> <li><p>findFirst
+the filtering criteria and operators are the same as findMany</p> <div class="language-typescript extra-class"><pre class="language-typescript"><code><span class="token comment">// Filter by a single field value</span>
+<span class="token keyword">const</span> user <span class="token operator">=</span> <span class="token keyword">await</span> blog<span class="token punctuation">.</span>user<span class="token punctuation">.</span><span class="token function">findFirst</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+  where<span class="token operator">:</span> <span class="token punctuation">{</span>
+    lastName<span class="token operator">:</span> <span class="token punctuation">{</span>
+      endsWith<span class="token operator">:</span> <span class="token string">'aca'</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+<span class="token comment">// Filter by multiple field values</span>
+<span class="token keyword">const</span> user <span class="token operator">=</span> <span class="token keyword">await</span> blog<span class="token punctuation">.</span>user<span class="token punctuation">.</span><span class="token function">findFirst</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+  where<span class="token operator">:</span> <span class="token punctuation">{</span>
+    firstName<span class="token operator">:</span> <span class="token punctuation">{</span>
+      startsWith<span class="token operator">:</span> <span class="token string">'t'</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token constant">OR</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+      age<span class="token operator">:</span> <span class="token punctuation">{</span>
+        gt<span class="token operator">:</span> <span class="token number">18</span>
+      <span class="token punctuation">}</span><span class="token punctuation">,</span>
+      <span class="token constant">AND</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+        gender<span class="token operator">:</span> <span class="token punctuation">{</span>
+          equals<span class="token operator">:</span> Gender<span class="token punctuation">.</span>Male
+        <span class="token punctuation">}</span>
+      <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  orderBy<span class="token operator">:</span> <span class="token punctuation">{</span>
+    id<span class="token operator">:</span> <span class="token string">'desc'</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+<span class="token comment">// Filter by related record field values</span>
+<span class="token keyword">const</span> user <span class="token operator">=</span> <span class="token keyword">await</span> blog<span class="token punctuation">.</span>user<span class="token punctuation">.</span><span class="token function">findFirst</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+  where<span class="token operator">:</span> <span class="token punctuation">{</span>
+    lastName<span class="token operator">:</span> <span class="token punctuation">{</span>
+      endsWith<span class="token operator">:</span> <span class="token string">'aca'</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    posts<span class="token operator">:</span> <span class="token punctuation">{</span>
+      some<span class="token operator">:</span> <span class="token punctuation">{</span>
+        score<span class="token operator">:</span> <span class="token punctuation">{</span>
+          gt<span class="token operator">:</span> <span class="token number">5</span>
+        <span class="token punctuation">}</span>
+      <span class="token punctuation">}</span><span class="token punctuation">,</span>
+      every<span class="token operator">:</span> <span class="token punctuation">{</span>
+        score<span class="token operator">:</span> <span class="token punctuation">{</span>
+          lte<span class="token operator">:</span> <span class="token number">50</span>
+        <span class="token punctuation">}</span>
+      <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+<span class="token keyword">const</span> post <span class="token operator">=</span> <span class="token keyword">await</span> blog<span class="token punctuation">.</span>post<span class="token punctuation">.</span><span class="token function">findFirst</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+  where<span class="token operator">:</span> <span class="token punctuation">{</span>
+    author<span class="token operator">:</span> <span class="token punctuation">{</span>
+      lastName<span class="token operator">:</span> <span class="token string">'aca'</span><span class="token punctuation">,</span>
+      age<span class="token operator">:</span> <span class="token punctuation">{</span>
+        gt<span class="token operator">:</span> <span class="token number">40</span>
+      <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+</code></pre></div></li> <li><p>insert</p> <ul><li><p>Create a single record</p> <div class="language-typescript extra-class"><pre class="language-typescript"><code><span class="token keyword">const</span> user <span class="token operator">=</span> <span class="token keyword">await</span> blog<span class="token punctuation">.</span>user<span class="token punctuation">.</span><span class="token function">insert</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+  data<span class="token operator">:</span> <span class="token punctuation">{</span>
+    firstName<span class="token operator">:</span> <span class="token string">'tom'</span><span class="token punctuation">,</span>
+    lastName<span class="token operator">:</span> <span class="token string">'aca'</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+</code></pre></div></li> <li><p>Create multiple records</p> <div class="language-typescript extra-class"><pre class="language-typescript"><code><span class="token keyword">const</span> users <span class="token operator">=</span> <span class="token keyword">await</span> blog<span class="token punctuation">.</span>user<span class="token punctuation">.</span><span class="token function">insert</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+  data<span class="token operator">:</span> <span class="token punctuation">[</span>
+    <span class="token punctuation">{</span>
+      firstName<span class="token operator">:</span> <span class="token string">'tom'</span><span class="token punctuation">,</span>
+      lastName<span class="token operator">:</span> <span class="token string">'aca'</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token punctuation">{</span>
+      firstName<span class="token operator">:</span> <span class="token string">'yao'</span><span class="token punctuation">,</span>
+      lastName<span class="token operator">:</span> <span class="token string">'min'</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">]</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+</code></pre></div></li> <li><p>Create conflict resolution</p> <div class="language-typescript extra-class"><pre class="language-typescript"><code><span class="token keyword">const</span> users <span class="token operator">=</span> <span class="token keyword">await</span> blog<span class="token punctuation">.</span>user<span class="token punctuation">.</span><span class="token function">insert</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+  data<span class="token operator">:</span> <span class="token punctuation">[</span>
+    <span class="token punctuation">{</span>
+      firstName<span class="token operator">:</span> <span class="token string">'tom'</span><span class="token punctuation">,</span>
+      lastName<span class="token operator">:</span> <span class="token string">'aca'</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token punctuation">{</span>
+      firstName<span class="token operator">:</span> <span class="token string">'yao'</span><span class="token punctuation">,</span>
+      lastName<span class="token operator">:</span> <span class="token string">'min'</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">]</span><span class="token punctuation">,</span>
+  skipConflict<span class="token operator">:</span> <span class="token punctuation">{</span>
+    onConflict<span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">'firstName'</span><span class="token punctuation">,</span> <span class="token string">'lastName'</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+    <span class="token comment">// action: 'merge'</span>
+    action<span class="token operator">:</span> <span class="token string">'ignore'</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+</code></pre></div></li> <li><p>Nested Write</p> <ul><li>Nested write allows you to write relational data to the database in a single transaction</li> <li>Provide transactional assurance for creating, updating, or deleting data across multiple tables in a single query. If any part of the query fails (for example, creating a user successfully but creating a post fails), all changes will be rolled back。</li> <li>Support any nested level supported by the data model</li> <li>When using insert or update queries on the model, associated fields are available. The following section displays the nested write options available for each query。</li></ul> <p>You can create one record and one or more associated records simultaneously
+Create one User record and two associated Post records for the following query</p> <div class="language-typescript extra-class"><pre class="language-typescript"><code><span class="token keyword">const</span> user <span class="token operator">=</span> <span class="token keyword">await</span> blog<span class="token punctuation">.</span>user<span class="token punctuation">.</span><span class="token function">insert</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+  data<span class="token operator">:</span> <span class="token punctuation">{</span>
+    firstName<span class="token operator">:</span> <span class="token string">'tom'</span><span class="token punctuation">,</span>
+    lastName<span class="token operator">:</span> <span class="token string">'aca'</span><span class="token punctuation">,</span>
+    posts<span class="token operator">:</span> <span class="token punctuation">{</span>
+      insert<span class="token operator">:</span> <span class="token punctuation">[</span>
+        <span class="token punctuation">{</span>
+          content<span class="token operator">:</span> <span class="token string">'content1'</span><span class="token punctuation">,</span>
+          score<span class="token operator">:</span> <span class="token number">5</span><span class="token punctuation">,</span>
+          categories<span class="token operator">:</span> <span class="token punctuation">{</span>
+            insert<span class="token operator">:</span> <span class="token punctuation">{</span>
+              name<span class="token operator">:</span> <span class="token string">'category'</span>
+            <span class="token punctuation">}</span>
+          <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span><span class="token punctuation">,</span>
+        <span class="token punctuation">{</span> content<span class="token operator">:</span> <span class="token string">'content2'</span><span class="token punctuation">,</span> score<span class="token operator">:</span> <span class="token number">10</span> <span class="token punctuation">}</span>
+      <span class="token punctuation">]</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+</code></pre></div><p>Connect a single record</p> <div class="language-typescript extra-class"><pre class="language-typescript"><code><span class="token keyword">const</span> post <span class="token operator">=</span> <span class="token keyword">await</span> blog<span class="token punctuation">.</span>post<span class="token punctuation">.</span><span class="token function">insert</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+  data<span class="token operator">:</span> <span class="token punctuation">{</span>
+    content<span class="token operator">:</span> <span class="token string">'content1'</span><span class="token punctuation">,</span>
+    score<span class="token operator">:</span> <span class="token number">5</span><span class="token punctuation">,</span>
+    author<span class="token operator">:</span> <span class="token punctuation">{</span>
+      connect<span class="token operator">:</span> <span class="token punctuation">{</span>
+        firstName<span class="token operator">:</span> <span class="token string">'tom'</span><span class="token punctuation">,</span>
+        lastName<span class="token operator">:</span> <span class="token string">'aca'</span>
+      <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+</code></pre></div><p>Connect multiple records
+Create a new User record for the following query and connect it to two existing articles</p> <div class="language-typescript extra-class"><pre class="language-typescript"><code><span class="token keyword">const</span> user <span class="token operator">=</span> <span class="token keyword">await</span> blog<span class="token punctuation">.</span>user<span class="token punctuation">.</span><span class="token function">insert</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+  data<span class="token operator">:</span> <span class="token punctuation">{</span>
+    firstName<span class="token operator">:</span> <span class="token string">'tom'</span><span class="token punctuation">,</span>
+    lastName<span class="token operator">:</span> <span class="token string">'aca'</span><span class="token punctuation">,</span>
+    posts<span class="token operator">:</span> <span class="token punctuation">{</span>
+      connect<span class="token operator">:</span> <span class="token punctuation">[</span><span class="token punctuation">{</span> serial<span class="token operator">:</span> <span class="token string">'2'</span> <span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token punctuation">{</span> serial<span class="token operator">:</span> <span class="token string">'3'</span> <span class="token punctuation">}</span><span class="token punctuation">]</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+</code></pre></div><p>Connect or create records
+If the associated record may or may not exist, please use connectOrInsert to connect the associated record</p> <div class="language-typescript extra-class"><pre class="language-typescript"><code><span class="token keyword">const</span> post <span class="token operator">=</span> <span class="token keyword">await</span> blog<span class="token punctuation">.</span>post<span class="token punctuation">.</span><span class="token function">insert</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+  data<span class="token operator">:</span> <span class="token punctuation">{</span>
+    content<span class="token operator">:</span> <span class="token string">'content1'</span><span class="token punctuation">,</span>
+    score<span class="token operator">:</span> <span class="token number">5</span><span class="token punctuation">,</span>
+    author<span class="token operator">:</span> <span class="token punctuation">{</span>
+      connectOrInsert<span class="token operator">:</span> <span class="token punctuation">{</span>
+        connect<span class="token operator">:</span> <span class="token punctuation">{</span>
+          firstName<span class="token operator">:</span> <span class="token string">'tom'</span><span class="token punctuation">,</span>
+          lastName<span class="token operator">:</span> <span class="token string">'aca'</span>
+        <span class="token punctuation">}</span><span class="token punctuation">,</span>
+        insert<span class="token operator">:</span> <span class="token punctuation">{</span>
+          firstName<span class="token operator">:</span> <span class="token string">'tom'</span><span class="token punctuation">,</span>
+          lastName<span class="token operator">:</span> <span class="token string">'aca'</span><span class="token punctuation">,</span>
+          age<span class="token operator">:</span> <span class="token number">20</span>
+        <span class="token punctuation">}</span>
+      <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+</code></pre></div></li></ul></li> <li><p>update</p> <ul><li>Update individual records
+The where condition supports the id or unique field<div class="language-typescript extra-class"><pre class="language-typescript"><code><span class="token keyword">const</span> user <span class="token operator">=</span> <span class="token keyword">await</span> blog<span class="token punctuation">.</span>user<span class="token punctuation">.</span><span class="token function">update</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+  where<span class="token operator">:</span> <span class="token punctuation">{</span>
+    firstName<span class="token operator">:</span> <span class="token string">'tom'</span><span class="token punctuation">,</span>
+    lastName<span class="token operator">:</span> <span class="token string">'aca'</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  data<span class="token operator">:</span> <span class="token punctuation">{</span>
+    age<span class="token operator">:</span> <span class="token number">5</span><span class="token punctuation">,</span>
+    lastName<span class="token operator">:</span> <span class="token string">'aca2'</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+</code></pre></div></li> <li>嵌套更新
+<ul><li>insert<div class="language-typescript extra-class"><pre class="language-typescript"><code><span class="token keyword">const</span> user <span class="token operator">=</span> <span class="token keyword">await</span> blog<span class="token punctuation">.</span>user<span class="token punctuation">.</span><span class="token function">update</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+  where<span class="token operator">:</span> <span class="token punctuation">{</span>
+    firstName<span class="token operator">:</span> <span class="token string">'tom'</span><span class="token punctuation">,</span>
+    lastName<span class="token operator">:</span> <span class="token string">'aca'</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  data<span class="token operator">:</span> <span class="token punctuation">{</span>
+    age<span class="token operator">:</span> <span class="token number">5</span><span class="token punctuation">,</span>
+    lastName<span class="token operator">:</span> <span class="token string">'aca2'</span><span class="token punctuation">,</span>
+    posts<span class="token operator">:</span> <span class="token punctuation">{</span>
+      insert<span class="token operator">:</span> <span class="token punctuation">{</span>
+        content<span class="token operator">:</span> <span class="token string">'content1'</span><span class="token punctuation">,</span>
+        score<span class="token operator">:</span> <span class="token number">5</span><span class="token punctuation">,</span>
+        categories<span class="token operator">:</span> <span class="token punctuation">{</span>
+          insert<span class="token operator">:</span> <span class="token punctuation">{</span>
+            name<span class="token operator">:</span> <span class="token string">'category'</span>
+          <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span>
+      <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+</code></pre></div></li> <li>connect<div class="language-typescript extra-class"><pre class="language-typescript"><code><span class="token keyword">const</span> user <span class="token operator">=</span> <span class="token keyword">await</span> blog<span class="token punctuation">.</span>user<span class="token punctuation">.</span><span class="token function">update</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+  where<span class="token operator">:</span> <span class="token punctuation">{</span>
+    firstName<span class="token operator">:</span> <span class="token string">'tom'</span><span class="token punctuation">,</span>
+    lastName<span class="token operator">:</span> <span class="token string">'aca'</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  data<span class="token operator">:</span> <span class="token punctuation">{</span>
+    age<span class="token operator">:</span> <span class="token number">5</span><span class="token punctuation">,</span>
+    lastName<span class="token operator">:</span> <span class="token string">'aca2'</span><span class="token punctuation">,</span>
+    posts<span class="token operator">:</span> <span class="token punctuation">{</span>
+      connect<span class="token operator">:</span> <span class="token punctuation">{</span>
+        serial<span class="token operator">:</span> <span class="token string">'3'</span>
+      <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+</code></pre></div></li> <li>connectOrInsert<div class="language-typescript extra-class"><pre class="language-typescript"><code><span class="token keyword">const</span> post <span class="token operator">=</span> <span class="token keyword">await</span> blog<span class="token punctuation">.</span>post<span class="token punctuation">.</span><span class="token function">update</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+  where<span class="token operator">:</span> <span class="token punctuation">{</span>
+    serial<span class="token operator">:</span> <span class="token string">'2'</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  data<span class="token operator">:</span> <span class="token punctuation">{</span>
+    author<span class="token operator">:</span> <span class="token punctuation">{</span>
+      connectOrInsert<span class="token operator">:</span> <span class="token punctuation">{</span>
+        connect<span class="token operator">:</span> <span class="token punctuation">{</span>
+          firstName<span class="token operator">:</span> <span class="token string">'tom'</span><span class="token punctuation">,</span>
+          lastName<span class="token operator">:</span> <span class="token string">'aca'</span>
+        <span class="token punctuation">}</span><span class="token punctuation">,</span>
+        insert<span class="token operator">:</span> <span class="token punctuation">{</span>
+          firstName<span class="token operator">:</span> <span class="token string">'tom'</span><span class="token punctuation">,</span>
+          lastName<span class="token operator">:</span> <span class="token string">'aca'</span><span class="token punctuation">,</span>
+          age<span class="token operator">:</span> <span class="token number">18</span>
+        <span class="token punctuation">}</span>
+      <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+</code></pre></div></li> <li>disconnect<div class="language-typescript extra-class"><pre class="language-typescript"><code><span class="token keyword">const</span> user <span class="token operator">=</span> <span class="token keyword">await</span> blog<span class="token punctuation">.</span>user<span class="token punctuation">.</span><span class="token function">update</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+  where<span class="token operator">:</span> <span class="token punctuation">{</span>
+    id<span class="token operator">:</span> <span class="token string">'2'</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  data<span class="token operator">:</span> <span class="token punctuation">{</span>
+    posts<span class="token operator">:</span> <span class="token punctuation">{</span>
+      disconnect<span class="token operator">:</span> <span class="token punctuation">{</span>
+        serial<span class="token operator">:</span> <span class="token string">'2'</span>
+      <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+</code></pre></div></li> <li>set<div class="language-typescript extra-class"><pre class="language-typescript"><code><span class="token keyword">const</span> user <span class="token operator">=</span> <span class="token keyword">await</span> blog<span class="token punctuation">.</span>user<span class="token punctuation">.</span><span class="token function">update</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+  where<span class="token operator">:</span> <span class="token punctuation">{</span>
+    id<span class="token operator">:</span> <span class="token string">'2'</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  data<span class="token operator">:</span> <span class="token punctuation">{</span>
+    posts<span class="token operator">:</span> <span class="token punctuation">{</span>
+      set<span class="token operator">:</span> <span class="token punctuation">{</span>
+        serial<span class="token operator">:</span> <span class="token string">'2'</span>
+      <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+</code></pre></div></li> <li>delete<div class="language-typescript extra-class"><pre class="language-typescript"><code><span class="token keyword">const</span> user <span class="token operator">=</span> <span class="token keyword">await</span> blog<span class="token punctuation">.</span>user<span class="token punctuation">.</span><span class="token function">update</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+  where<span class="token operator">:</span> <span class="token punctuation">{</span>
+    id<span class="token operator">:</span> <span class="token string">'2'</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  data<span class="token operator">:</span> <span class="token punctuation">{</span>
+    posts<span class="token operator">:</span> <span class="token punctuation">{</span>
+      <span class="token keyword">delete</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+        serial<span class="token operator">:</span> <span class="token string">'2'</span>
+      <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+</code></pre></div></li> <li>deleteMany<div class="language-typescript extra-class"><pre class="language-typescript"><code><span class="token keyword">const</span> user <span class="token operator">=</span> <span class="token keyword">await</span> blog<span class="token punctuation">.</span>user<span class="token punctuation">.</span><span class="token function">update</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+  where<span class="token operator">:</span> <span class="token punctuation">{</span>
+    id<span class="token operator">:</span> <span class="token string">'2'</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  data<span class="token operator">:</span> <span class="token punctuation">{</span>
+    posts<span class="token operator">:</span> <span class="token punctuation">{</span>
+      deleteMany<span class="token operator">:</span> <span class="token punctuation">{</span>
+        score<span class="token operator">:</span> <span class="token punctuation">{</span>
+          lt<span class="token operator">:</span> <span class="token number">5</span>
+        <span class="token punctuation">}</span>
+      <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+</code></pre></div></li> <li>update<div class="language-typescript extra-class"><pre class="language-typescript"><code><span class="token keyword">const</span> user <span class="token operator">=</span> <span class="token keyword">await</span> blog<span class="token punctuation">.</span>user<span class="token punctuation">.</span><span class="token function">update</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+  where<span class="token operator">:</span> <span class="token punctuation">{</span>
+    id<span class="token operator">:</span> <span class="token string">'2'</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  data<span class="token operator">:</span> <span class="token punctuation">{</span>
+    posts<span class="token operator">:</span> <span class="token punctuation">{</span>
+      update<span class="token operator">:</span> <span class="token punctuation">{</span>
+        where<span class="token operator">:</span> <span class="token punctuation">{</span>
+          serial<span class="token operator">:</span> <span class="token string">'4'</span>
+        <span class="token punctuation">}</span><span class="token punctuation">,</span>
+        data<span class="token operator">:</span> <span class="token punctuation">{</span>
+          score<span class="token operator">:</span> <span class="token number">15</span>
+        <span class="token punctuation">}</span>
+      <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+</code></pre></div></li> <li>updateMany<div class="language-typescript extra-class"><pre class="language-typescript"><code><span class="token keyword">const</span> user <span class="token operator">=</span> <span class="token keyword">await</span> blog<span class="token punctuation">.</span>user<span class="token punctuation">.</span><span class="token function">update</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+  where<span class="token operator">:</span> <span class="token punctuation">{</span>
+    id<span class="token operator">:</span> <span class="token string">'2'</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  data<span class="token operator">:</span> <span class="token punctuation">{</span>
+    posts<span class="token operator">:</span> <span class="token punctuation">{</span>
+      updateMany<span class="token operator">:</span> <span class="token punctuation">{</span>
+        where<span class="token operator">:</span> <span class="token punctuation">{</span>
+          score<span class="token operator">:</span> <span class="token punctuation">{</span>
+            lt<span class="token operator">:</span> <span class="token number">10</span>
+          <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span><span class="token punctuation">,</span>
+        data<span class="token operator">:</span> <span class="token punctuation">{</span>
+          score<span class="token operator">:</span> <span class="token number">15</span>
+        <span class="token punctuation">}</span>
+      <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+</code></pre></div></li></ul></li></ul></li> <li><p>updateMany</p> <div class="language-typescript extra-class"><pre class="language-typescript"><code><span class="token keyword">const</span> updateUsers <span class="token operator">=</span> <span class="token keyword">await</span> blog<span class="token punctuation">.</span>user<span class="token punctuation">.</span><span class="token function">updateMany</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+  where<span class="token operator">:</span> <span class="token punctuation">{</span>
+    firstName<span class="token operator">:</span> <span class="token punctuation">{</span>
+      contains<span class="token operator">:</span> <span class="token string">'tom'</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  data<span class="token operator">:</span> <span class="token punctuation">{</span>
+    age<span class="token operator">:</span> <span class="token number">18</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+</code></pre></div></li> <li><p>upsert
+Update or create records
+The following query uses upsert() to update a User record with a specific name. If the User record does not exist, it is created</p> <div class="language-typescript extra-class"><pre class="language-typescript"><code><span class="token keyword">const</span> upsertUser <span class="token operator">=</span> <span class="token keyword">await</span> blog<span class="token punctuation">.</span>user<span class="token punctuation">.</span><span class="token function">updateMany</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+  where<span class="token operator">:</span> <span class="token punctuation">{</span>
+    firstName<span class="token operator">:</span> <span class="token string">'tom'</span><span class="token punctuation">,</span>
+    lastName<span class="token operator">:</span> <span class="token string">'aca'</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  insert<span class="token operator">:</span> <span class="token punctuation">{</span>
+    firstName<span class="token operator">:</span> <span class="token string">'tom'</span><span class="token punctuation">,</span>
+    lastName<span class="token operator">:</span> <span class="token string">'aca'</span><span class="token punctuation">,</span>
+    age<span class="token operator">:</span> <span class="token number">18</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  update<span class="token operator">:</span> <span class="token punctuation">{</span>
+    age<span class="token operator">:</span> <span class="token number">18</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+</code></pre></div></li> <li><p>delete</p> <div class="language-typescript extra-class"><pre class="language-typescript"><code><span class="token keyword">const</span> deleteUser <span class="token operator">=</span> <span class="token keyword">await</span> blog<span class="token punctuation">.</span>user<span class="token punctuation">.</span><span class="token function">delete</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+  where<span class="token operator">:</span> <span class="token punctuation">{</span>
+    firstName<span class="token operator">:</span> <span class="token string">'tom'</span><span class="token punctuation">,</span>
+    lastName<span class="token operator">:</span> <span class="token string">'aca'</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+</code></pre></div></li> <li><p>deleteMany</p> <div class="language-typescript extra-class"><pre class="language-typescript"><code><span class="token keyword">const</span> deleteUsers <span class="token operator">=</span> <span class="token keyword">await</span> blog<span class="token punctuation">.</span>user<span class="token punctuation">.</span><span class="token function">deleteMany</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+  where<span class="token operator">:</span> <span class="token punctuation">{</span>
+    firstName<span class="token operator">:</span> <span class="token punctuation">{</span>
+      contains<span class="token operator">:</span> <span class="token string">'tom'</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+</code></pre></div></li> <li><p>aggregate function: count countDistinct sum sumDistinct avg avgDistinct max mix， Concentrate in the $ namespace of each table</p></li> <li><p>raw：generate a raw function for each database, represented as $. raw<br></p></li> <li><p>select</p> <ul><li>By default, when a query returns records (rather than counts), the result includes all scalar fields of the model (including enumerations)<div class="language-typescript extra-class"><pre class="language-typescript"><code><span class="token keyword">const</span> users <span class="token operator">=</span> <span class="token keyword">await</span> blog<span class="token punctuation">.</span>user<span class="token punctuation">.</span><span class="token function">findMany</span><span class="token punctuation">(</span><span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">)</span>
+<span class="token keyword">const</span> users <span class="token operator">=</span> <span class="token keyword">await</span> blog<span class="token punctuation">.</span>user<span class="token punctuation">.</span><span class="token function">findMany</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+  select<span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token string-property property">'*'</span><span class="token operator">:</span> <span class="token boolean">true</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+</code></pre></div></li> <li>select specific fields<div class="language-typescript extra-class"><pre class="language-typescript"><code><span class="token keyword">const</span> user <span class="token operator">=</span> <span class="token keyword">await</span> blog<span class="token punctuation">.</span>user<span class="token punctuation">.</span><span class="token function">findFirst</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+  where<span class="token operator">:</span> <span class="token punctuation">{</span>
+    firstName<span class="token operator">:</span> <span class="token punctuation">{</span>
+      contains<span class="token operator">:</span> <span class="token string">'tom'</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  select<span class="token operator">:</span> <span class="token punctuation">{</span>
+    age<span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+    firstName<span class="token operator">:</span> <span class="token boolean">true</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+</code></pre></div></li> <li>return nested objects by selecting relationship fields
+You can nest queries at any depth.<div class="language-typescript extra-class"><pre class="language-typescript"><code><span class="token keyword">const</span> users <span class="token operator">=</span> <span class="token keyword">await</span> blog<span class="token punctuation">.</span>user<span class="token punctuation">.</span><span class="token function">findFirst</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+  select<span class="token operator">:</span> <span class="token punctuation">{</span>
+    firstName<span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+    lastName<span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+    posts<span class="token operator">:</span> <span class="token punctuation">{</span>
+      content<span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+      score<span class="token operator">:</span> <span class="token boolean">true</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+<span class="token keyword">const</span> users <span class="token operator">=</span> <span class="token keyword">await</span> blog<span class="token punctuation">.</span>user<span class="token punctuation">.</span><span class="token function">findFirst</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+  select<span class="token operator">:</span> <span class="token punctuation">{</span>
+    firstName<span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+    lastName<span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+    posts<span class="token operator">:</span> <span class="token punctuation">{</span>
+      where<span class="token operator">:</span> <span class="token punctuation">{</span>
+        score<span class="token operator">:</span> <span class="token punctuation">{</span>
+          lt<span class="token operator">:</span> <span class="token number">5</span>
+        <span class="token punctuation">}</span>
+      <span class="token punctuation">}</span><span class="token punctuation">,</span>
+      orderBy<span class="token operator">:</span> <span class="token punctuation">{</span>
+        score<span class="token operator">:</span> <span class="token string">'desc'</span>
+      <span class="token punctuation">}</span><span class="token punctuation">,</span>
+      select<span class="token operator">:</span> <span class="token punctuation">{</span>
+        content<span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+        score<span class="token operator">:</span> <span class="token boolean">true</span>
+      <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+</code></pre></div></li></ul></li> <li><p>omit
+exclude specific fields</p> <div class="language-typescript extra-class"><pre class="language-typescript"><code>  <span class="token keyword">const</span> user <span class="token operator">=</span> <span class="token keyword">await</span> blog<span class="token punctuation">.</span>user<span class="token punctuation">.</span><span class="token function">findFirst</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+    where<span class="token operator">:</span> <span class="token punctuation">{</span>
+      firstName<span class="token operator">:</span> <span class="token punctuation">{</span>
+        contains<span class="token operator">:</span> <span class="token string">'tom'</span>
+      <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    omit<span class="token operator">:</span> <span class="token punctuation">{</span>
+      age<span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+      firstName<span class="token operator">:</span> <span class="token boolean">true</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span><span class="token punctuation">)</span>
+</code></pre></div></li></ul></li> <li><p>Transactions: Database transactions are used as follows：</p></li></ul> <div class="language-typescript extra-class"><pre class="language-typescript"><code>  <span class="token keyword">const</span> trx <span class="token operator">=</span> <span class="token operator">&lt;</span>top<span class="token operator">-</span>level <span class="token keyword">namespace</span> name<span class="token operator">&gt;</span><span class="token punctuation">.</span><span class="token function">transaction</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+  <span class="token comment">// Note： be sure to use commit() and rollback()</span>
+  <span class="token keyword">try</span> <span class="token punctuation">{</span>
+    <span class="token keyword">await</span> trx<span class="token punctuation">.</span><span class="token operator">&lt;</span>table name<span class="token operator">&gt;</span><span class="token punctuation">.</span><span class="token operator">&lt;</span>method<span class="token operator">&gt;</span>
+    <span class="token keyword">await</span> trx<span class="token punctuation">.</span><span class="token function">commit</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+  <span class="token punctuation">}</span> <span class="token keyword">catch</span><span class="token punctuation">(</span>e<span class="token punctuation">)</span><span class="token punctuation">{</span>
+    <span class="token keyword">await</span> trx<span class="token punctuation">.</span><span class="token function">rollback</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+  <span class="token punctuation">}</span>
+
+</code></pre></div><p>Note：Frontend also has transactions, but it cannot implement real transactions. It is just to write code in a transactional way so that code changes can be reduced when the code is migrated to the backend in the future!</p> <ul><li>$ApiBridge：This method is to bridge the data transmitted from frontend to backend. It will be parsed into the same method name and parameters of the frontend, then call the same method of backend end, and return the result</li></ul> <h2 id="rpc-function"><a href="#rpc-function" class="header-anchor">#</a> RPC function</h2> <p>RPC function is defined in the backend and needs to be stored in the RPC folder in the API directory (eg：src/aca.server/RPC），which is written as：</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">export</span> <span class="token keyword">async</span> <span class="token keyword">function</span> <span class="token function">fn</span><span class="token punctuation">(</span><span class="token parameter"><span class="token literal-property property">ctx</span><span class="token operator">:</span> any<span class="token punctuation">,</span> <span class="token literal-property property">param</span><span class="token operator">:</span> string</span><span class="token punctuation">)</span><span class="token operator">:</span> stirng <span class="token punctuation">{</span>
+  <span class="token keyword">return</span> param
+<span class="token punctuation">}</span>
+</code></pre></div><p>Special note：</p> <ol><li>The first parameter of the function is the context, which will be omitted when the frontend function of the same name is generated</li> <li>If there are multiple files in the RPC directory, aca.ts will automatically rewrite the index.ts file in the RPC directory to export the reference of other pages. At this time, the RPC function cannot be written in index.ts</li> <li>Support namespace</li></ol> <h2 id="safety"><a href="#safety" class="header-anchor">#</a> Safety</h2> <ul><li>The frontend database API is only recommended for use in the development phase and is prohibited in the production environment</li> <li>Access to backend data in the production environment must undergo strict data verification</li> <li>Production web access uses https</li> <li>Access backend with token</li> <li>Raw function is prohibited in production environment</li></ul> <h2 id="development-advice"><a href="#development-advice" class="header-anchor">#</a> Development advice</h2> <ul><li>When doing web development, try to concentrate the methods for accessing the backend in one folder, and do not directly embed calling database methods in the frontend logic</li> <li>If a logic needs to access the backend database multiple times, try to write it as a transaction. After the code is stable, move the code to the backend and write it as an RPC function for the frontend to call</li> <li>It is recommended to write the function of the frontend calling the backend as follows so that the code changes are minimal when migrating to the backend:</li></ul> <div class="language-js extra-class"><pre class="language-js"><code><span class="token comment">// ctx is the context of the backend, and the frontend can define a variable to simulate the context</span>
+<span class="token keyword">async</span> <span class="token keyword">function</span> <span class="token function">fn</span><span class="token punctuation">(</span><span class="token parameter">param</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token comment">// When the fn is migrated to the back end and becomes an RPC function</span>
+  <span class="token comment">// Uncomment the following line and call the backend function</span>
+  <span class="token comment">// return $RPC.fn(param)</span>
+  <span class="token keyword">let</span> ctx
+  <span class="token keyword">const</span> trx <span class="token operator">=</span> <span class="token operator">&lt;</span>database<span class="token operator">&gt;</span><span class="token punctuation">.</span><span class="token function">transaction</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+  <span class="token keyword">try</span> <span class="token punctuation">{</span>
+    trx<span class="token punctuation">.</span><span class="token operator">&lt;</span>tableName<span class="token operator">&gt;</span><span class="token punctuation">.</span><span class="token operator">&lt;</span>methodName<span class="token operator">&gt;</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token keyword">await</span> trx<span class="token punctuation">.</span><span class="token function">commit</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+  <span class="token punctuation">}</span> <span class="token keyword">catch</span> <span class="token punctuation">(</span>e<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">await</span> trx<span class="token punctuation">.</span><span class="token function">rollback</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+<span class="token comment">// The above code is migrated to the backend and made into an RPC function with the following changes (using ctx as the input parameter of the function)：</span>
+<span class="token keyword">async</span> <span class="token keyword">function</span> <span class="token function">fn</span><span class="token punctuation">(</span><span class="token parameter">ctx<span class="token punctuation">,</span> param</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">const</span> trx <span class="token operator">=</span> <span class="token operator">&lt;</span>database<span class="token operator">&gt;</span><span class="token punctuation">.</span><span class="token function">transaction</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+  <span class="token keyword">try</span> <span class="token punctuation">{</span>
+    trx<span class="token punctuation">.</span><span class="token operator">&lt;</span>tableName<span class="token operator">&gt;</span><span class="token punctuation">.</span><span class="token operator">&lt;</span>methodName<span class="token operator">&gt;</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token keyword">await</span> trx<span class="token punctuation">.</span><span class="token function">commit</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+  <span class="token punctuation">}</span> <span class="token keyword">catch</span> <span class="token punctuation">(</span>e<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">await</span> trx<span class="token punctuation">.</span><span class="token function">rollback</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre></div><blockquote><p>The code and documentation are still in the internal testing stage, and valuable comments are welcome</p></blockquote></div> <footer class="page-edit"><!----> <!----></footer> <!----> </main></div><div class="global-ui"></div></div>
+    <script src="/assets/js/app.8e4a1e90.js" defer></script><script src="/assets/js/3.3a424c07.js" defer></script><script src="/assets/js/10.d2928415.js" defer></script>
+  </body>
+</html>
